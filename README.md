@@ -3,6 +3,8 @@ This repository contains all example codes for O'Reilly's iOS 9 Swift Programmin
 
 All code has been tested with: __Xcode Version 7.0.1 (7A1001)__
 
+![iOS 9 Swift Programming Cookbook's Logo Image](iOS_9_swift_prog_ckbk_comp.png)
+
 ## Using the Souce code
 If you would like to use this source code, as it is, in your own apps or copy paste this code anywhere, including StackOverflow, please do credit me by mentioning my name. Thank you.
 
