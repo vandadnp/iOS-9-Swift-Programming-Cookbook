@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8164.2" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Oyv-aD-hsg">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Transferring_Small_Pieces_of_Data_To_and_From_the_Watch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ready..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mkv-UZ-Pi0">
+                                <rect key="frame" x="20" y="72" width="560" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Im3-B4-WSF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MxZ-iw-ikf">
+                                <rect key="frame" x="20" y="101" width="69" height="30"/>
+                                <state key="normal" title="Download"/>
+                                <connections>
+                                    <action selector="download" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rz1-qM-H6s"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oOQ-GE-QaR">
+                                <rect key="frame" x="20" y="139" width="99" height="30"/>
+                                <state key="normal" title="Send to watch"/>
+                                <connections>
+                                    <action selector="send" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uup-IB-hVB"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reachability Status..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6q-Bw-WE1">
+                                <rect key="frame" x="20" y="177" width="560" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="lm8-XW-N2N"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oOQ-GE-QaR" firstAttribute="top" secondItem="MxZ-iw-ikf" secondAttribute="bottom" constant="8" symbolic="YES" id="36Y-Im-atu"/>
+                            <constraint firstItem="MxZ-iw-ikf" firstAttribute="leading" secondItem="oOQ-GE-QaR" secondAttribute="leading" id="9XR-AE-m0P"/>
+                            <constraint firstItem="Mkv-UZ-Pi0" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="FMd-Re-ZZj"/>
+                            <constraint firstItem="h6q-Bw-WE1" firstAttribute="leading" secondItem="oOQ-GE-QaR" secondAttribute="leading" id="HZd-ME-gpt"/>
+                            <constraint firstItem="Mkv-UZ-Pi0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="b5f-4z-TkS"/>
+                            <constraint firstItem="MxZ-iw-ikf" firstAttribute="top" secondItem="Mkv-UZ-Pi0" secondAttribute="bottom" constant="8" symbolic="YES" id="cp4-Jp-F7C"/>
+                            <constraint firstItem="h6q-Bw-WE1" firstAttribute="top" secondItem="oOQ-GE-QaR" secondAttribute="bottom" constant="8" symbolic="YES" id="fj2-W7-Cfh"/>
+                            <constraint firstItem="h6q-Bw-WE1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="kGk-MD-3Rb"/>
+                            <constraint firstItem="h6q-Bw-WE1" firstAttribute="trailing" secondItem="Mkv-UZ-Pi0" secondAttribute="trailing" id="nDh-jq-5OH"/>
+                            <constraint firstItem="Mkv-UZ-Pi0" firstAttribute="leading" secondItem="MxZ-iw-ikf" secondAttribute="leading" id="wfX-uH-h84"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Gh4-Yw-AIA"/>
+                    <connections>
+                        <outlet property="downloadBtn" destination="MxZ-iw-ikf" id="HpX-pe-cVz"/>
+                        <outlet property="reachabilityStatusLbl" destination="h6q-Bw-WE1" id="jcY-ae-raO"/>
+                        <outlet property="sendBtn" destination="oOQ-GE-QaR" id="Vla-RA-mDA"/>
+                        <outlet property="statusLbl" destination="Mkv-UZ-Pi0" id="Vve-rs-OSw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1204" y="233"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JR0-kz-DvA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Oyv-aD-hsg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aRx-FH-kti">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="o0H-91-N74"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KGa-Pf-a2u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="458" y="233"/>
+        </scene>
+    </scenes>
+</document>

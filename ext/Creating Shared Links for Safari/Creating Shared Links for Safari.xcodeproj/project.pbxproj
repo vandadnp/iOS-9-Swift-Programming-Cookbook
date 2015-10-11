@@ -1,0 +1,421 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9D7D74D21B43C7B200F44748 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D74D11B43C7B200F44748 /* AppDelegate.swift */; };
+		9D7D74D41B43C7B200F44748 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D74D31B43C7B200F44748 /* ViewController.swift */; };
+		9D7D74D71B43C7B200F44748 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D7D74D51B43C7B200F44748 /* Main.storyboard */; };
+		9D7D74D91B43C7B200F44748 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D7D74D81B43C7B200F44748 /* Assets.xcassets */; };
+		9D7D74DC1B43C7B200F44748 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D7D74DA1B43C7B200F44748 /* LaunchScreen.storyboard */; };
+		9D7D74EA1B43C97100F44748 /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D74E91B43C97100F44748 /* RequestHandler.swift */; };
+		9D7D74EE1B43C97100F44748 /* SharedLink.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9D7D74E71B43C97100F44748 /* SharedLink.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9D7D74F41B43C97D00F44748 /* ExtIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D7D74F31B43C97D00F44748 /* ExtIcon.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9D7D74EC1B43C97100F44748 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9D7D74C61B43C7B200F44748 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9D7D74E61B43C97100F44748;
+			remoteInfo = SharedLink;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9D7D74F21B43C97100F44748 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				9D7D74EE1B43C97100F44748 /* SharedLink.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		9D7D74CE1B43C7B200F44748 /* Creating Shared Links for Safari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Creating Shared Links for Safari.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D7D74D11B43C7B200F44748 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9D7D74D31B43C7B200F44748 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9D7D74D61B43C7B200F44748 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9D7D74D81B43C7B200F44748 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9D7D74DB1B43C7B200F44748 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9D7D74DD1B43C7B200F44748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D7D74E71B43C97100F44748 /* SharedLink.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SharedLink.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D7D74E91B43C97100F44748 /* RequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
+		9D7D74EB1B43C97100F44748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D7D74F31B43C97D00F44748 /* ExtIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ExtIcon.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9D7D74CB1B43C7B200F44748 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D7D74E41B43C97100F44748 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9D7D74C51B43C7B200F44748 = {
+			isa = PBXGroup;
+			children = (
+				9D7D74D01B43C7B200F44748 /* Creating Shared Links for Safari */,
+				9D7D74E81B43C97100F44748 /* SharedLink */,
+				9D7D74CF1B43C7B200F44748 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9D7D74CF1B43C7B200F44748 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9D7D74CE1B43C7B200F44748 /* Creating Shared Links for Safari.app */,
+				9D7D74E71B43C97100F44748 /* SharedLink.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9D7D74D01B43C7B200F44748 /* Creating Shared Links for Safari */ = {
+			isa = PBXGroup;
+			children = (
+				9D7D74D11B43C7B200F44748 /* AppDelegate.swift */,
+				9D7D74D31B43C7B200F44748 /* ViewController.swift */,
+				9D7D74D51B43C7B200F44748 /* Main.storyboard */,
+				9D7D74D81B43C7B200F44748 /* Assets.xcassets */,
+				9D7D74DA1B43C7B200F44748 /* LaunchScreen.storyboard */,
+				9D7D74DD1B43C7B200F44748 /* Info.plist */,
+			);
+			path = "Creating Shared Links for Safari";
+			sourceTree = "<group>";
+		};
+		9D7D74E81B43C97100F44748 /* SharedLink */ = {
+			isa = PBXGroup;
+			children = (
+				9D7D74F31B43C97D00F44748 /* ExtIcon.png */,
+				9D7D74E91B43C97100F44748 /* RequestHandler.swift */,
+				9D7D74EB1B43C97100F44748 /* Info.plist */,
+			);
+			path = SharedLink;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9D7D74CD1B43C7B200F44748 /* Creating Shared Links for Safari */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9D7D74E01B43C7B200F44748 /* Build configuration list for PBXNativeTarget "Creating Shared Links for Safari" */;
+			buildPhases = (
+				9D7D74CA1B43C7B200F44748 /* Sources */,
+				9D7D74CB1B43C7B200F44748 /* Frameworks */,
+				9D7D74CC1B43C7B200F44748 /* Resources */,
+				9D7D74F21B43C97100F44748 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9D7D74ED1B43C97100F44748 /* PBXTargetDependency */,
+			);
+			name = "Creating Shared Links for Safari";
+			productName = "Creating Shared Links for Safari";
+			productReference = 9D7D74CE1B43C7B200F44748 /* Creating Shared Links for Safari.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9D7D74E61B43C97100F44748 /* SharedLink */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9D7D74EF1B43C97100F44748 /* Build configuration list for PBXNativeTarget "SharedLink" */;
+			buildPhases = (
+				9D7D74E31B43C97100F44748 /* Sources */,
+				9D7D74E41B43C97100F44748 /* Frameworks */,
+				9D7D74E51B43C97100F44748 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SharedLink;
+			productName = SharedLink;
+			productReference = 9D7D74E71B43C97100F44748 /* SharedLink.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9D7D74C61B43C7B200F44748 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = Pixolity;
+				TargetAttributes = {
+					9D7D74CD1B43C7B200F44748 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					9D7D74E61B43C97100F44748 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = 9D7D74C91B43C7B200F44748 /* Build configuration list for PBXProject "Creating Shared Links for Safari" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9D7D74C51B43C7B200F44748;
+			productRefGroup = 9D7D74CF1B43C7B200F44748 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9D7D74CD1B43C7B200F44748 /* Creating Shared Links for Safari */,
+				9D7D74E61B43C97100F44748 /* SharedLink */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9D7D74CC1B43C7B200F44748 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D7D74DC1B43C7B200F44748 /* LaunchScreen.storyboard in Resources */,
+				9D7D74D91B43C7B200F44748 /* Assets.xcassets in Resources */,
+				9D7D74D71B43C7B200F44748 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D7D74E51B43C97100F44748 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D7D74F41B43C97D00F44748 /* ExtIcon.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9D7D74CA1B43C7B200F44748 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D7D74D41B43C7B200F44748 /* ViewController.swift in Sources */,
+				9D7D74D21B43C7B200F44748 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D7D74E31B43C97100F44748 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D7D74EA1B43C97100F44748 /* RequestHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9D7D74ED1B43C97100F44748 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9D7D74E61B43C97100F44748 /* SharedLink */;
+			targetProxy = 9D7D74EC1B43C97100F44748 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9D7D74D51B43C7B200F44748 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9D7D74D61B43C7B200F44748 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9D7D74DA1B43C7B200F44748 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9D7D74DB1B43C7B200F44748 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9D7D74DE1B43C7B200F44748 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9D7D74DF1B43C7B200F44748 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9D7D74E11B43C7B200F44748 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = "Creating Shared Links for Safari/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "se.pixolity.Creating-Shared-Links-for-Safari";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9D7D74E21B43C7B200F44748 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = "Creating Shared Links for Safari/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "se.pixolity.Creating-Shared-Links-for-Safari";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		9D7D74F01B43C97100F44748 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SharedLink/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "se.pixolity.Creating-Shared-Links-for-Safari.SharedLink";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		9D7D74F11B43C97100F44748 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SharedLink/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "se.pixolity.Creating-Shared-Links-for-Safari.SharedLink";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9D7D74C91B43C7B200F44748 /* Build configuration list for PBXProject "Creating Shared Links for Safari" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D7D74DE1B43C7B200F44748 /* Debug */,
+				9D7D74DF1B43C7B200F44748 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9D7D74E01B43C7B200F44748 /* Build configuration list for PBXNativeTarget "Creating Shared Links for Safari" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D7D74E11B43C7B200F44748 /* Debug */,
+				9D7D74E21B43C7B200F44748 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9D7D74EF1B43C97100F44748 /* Build configuration list for PBXNativeTarget "SharedLink" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D7D74F01B43C97100F44748 /* Debug */,
+				9D7D74F11B43C97100F44748 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9D7D74C61B43C7B200F44748 /* Project object */;
+}

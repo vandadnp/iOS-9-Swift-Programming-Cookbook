@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.20" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Showing_Web_Content_in_Safari_View_Controller" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://www.macrumors.com/2015/06/29/2015-apple-camp-for-kids-retail-stores/" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GQI-Yp-cPr">
+                                <rect key="frame" x="20" y="20" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LEG-RH-1bh">
+                                <rect key="frame" x="20" y="58" width="97" height="30"/>
+                                <state key="normal" title="Open in Safari"/>
+                                <connections>
+                                    <action selector="openInSafari" destination="BYZ-38-t0r" eventType="touchUpInside" id="6nI-4Q-VrS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LEG-RH-1bh" firstAttribute="top" secondItem="GQI-Yp-cPr" secondAttribute="bottom" constant="8" symbolic="YES" id="JCr-3b-uEc"/>
+                            <constraint firstItem="GQI-Yp-cPr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="XD7-Sb-nQn"/>
+                            <constraint firstItem="GQI-Yp-cPr" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="geh-z6-WW9"/>
+                            <constraint firstItem="GQI-Yp-cPr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="q3g-G0-ROH"/>
+                            <constraint firstItem="GQI-Yp-cPr" firstAttribute="leading" secondItem="LEG-RH-1bh" secondAttribute="leading" id="tc1-fJ-9aw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textField" destination="GQI-Yp-cPr" id="SIm-F7-YQu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="387"/>
+        </scene>
+    </scenes>
+</document>

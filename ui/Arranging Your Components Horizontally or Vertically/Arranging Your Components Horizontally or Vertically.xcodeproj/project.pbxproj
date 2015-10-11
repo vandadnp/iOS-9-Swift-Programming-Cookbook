@@ -1,0 +1,292 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9DE504B41B4129830090DC51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE504B31B4129830090DC51 /* AppDelegate.swift */; };
+		9DE504B61B4129830090DC51 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE504B51B4129830090DC51 /* ViewController.swift */; };
+		9DE504B91B4129830090DC51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DE504B71B4129830090DC51 /* Main.storyboard */; };
+		9DE504BB1B4129830090DC51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DE504BA1B4129830090DC51 /* Assets.xcassets */; };
+		9DE504BE1B4129830090DC51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DE504BC1B4129830090DC51 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9DE504B01B4129830090DC51 /* Arranging Your Components Horizontally or Vertically.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Arranging Your Components Horizontally or Vertically.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DE504B31B4129830090DC51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9DE504B51B4129830090DC51 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9DE504B81B4129830090DC51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9DE504BA1B4129830090DC51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9DE504BD1B4129830090DC51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9DE504BF1B4129830090DC51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9DE504AD1B4129830090DC51 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9DE504A71B4129830090DC51 = {
+			isa = PBXGroup;
+			children = (
+				9DE504B21B4129830090DC51 /* Arranging Your Components Horizontally or Vertically */,
+				9DE504B11B4129830090DC51 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9DE504B11B4129830090DC51 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9DE504B01B4129830090DC51 /* Arranging Your Components Horizontally or Vertically.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9DE504B21B4129830090DC51 /* Arranging Your Components Horizontally or Vertically */ = {
+			isa = PBXGroup;
+			children = (
+				9DE504B31B4129830090DC51 /* AppDelegate.swift */,
+				9DE504B51B4129830090DC51 /* ViewController.swift */,
+				9DE504B71B4129830090DC51 /* Main.storyboard */,
+				9DE504BA1B4129830090DC51 /* Assets.xcassets */,
+				9DE504BC1B4129830090DC51 /* LaunchScreen.storyboard */,
+				9DE504BF1B4129830090DC51 /* Info.plist */,
+			);
+			path = "Arranging Your Components Horizontally or Vertically";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9DE504AF1B4129830090DC51 /* Arranging Your Components Horizontally or Vertically */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DE504C21B4129830090DC51 /* Build configuration list for PBXNativeTarget "Arranging Your Components Horizontally or Vertically" */;
+			buildPhases = (
+				9DE504AC1B4129830090DC51 /* Sources */,
+				9DE504AD1B4129830090DC51 /* Frameworks */,
+				9DE504AE1B4129830090DC51 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Arranging Your Components Horizontally or Vertically";
+			productName = "Arranging Your Components Horizontally or Vertically";
+			productReference = 9DE504B01B4129830090DC51 /* Arranging Your Components Horizontally or Vertically.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9DE504A81B4129830090DC51 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = Pixolity;
+				TargetAttributes = {
+					9DE504AF1B4129830090DC51 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = 9DE504AB1B4129830090DC51 /* Build configuration list for PBXProject "Arranging Your Components Horizontally or Vertically" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9DE504A71B4129830090DC51;
+			productRefGroup = 9DE504B11B4129830090DC51 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9DE504AF1B4129830090DC51 /* Arranging Your Components Horizontally or Vertically */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9DE504AE1B4129830090DC51 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DE504BE1B4129830090DC51 /* LaunchScreen.storyboard in Resources */,
+				9DE504BB1B4129830090DC51 /* Assets.xcassets in Resources */,
+				9DE504B91B4129830090DC51 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9DE504AC1B4129830090DC51 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DE504B61B4129830090DC51 /* ViewController.swift in Sources */,
+				9DE504B41B4129830090DC51 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9DE504B71B4129830090DC51 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DE504B81B4129830090DC51 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9DE504BC1B4129830090DC51 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DE504BD1B4129830090DC51 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9DE504C01B4129830090DC51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9DE504C11B4129830090DC51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9DE504C31B4129830090DC51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Arranging Your Components Horizontally or Vertically/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "se.pixolity.Arranging-Your-Components-Horizontally-or-Vertically";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9DE504C41B4129830090DC51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Arranging Your Components Horizontally or Vertically/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "se.pixolity.Arranging-Your-Components-Horizontally-or-Vertically";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9DE504AB1B4129830090DC51 /* Build configuration list for PBXProject "Arranging Your Components Horizontally or Vertically" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DE504C01B4129830090DC51 /* Debug */,
+				9DE504C11B4129830090DC51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DE504C21B4129830090DC51 /* Build configuration list for PBXNativeTarget "Arranging Your Components Horizontally or Vertically" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DE504C31B4129830090DC51 /* Debug */,
+				9DE504C41B4129830090DC51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9DE504A81B4129830090DC51 /* Project object */;
+}

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.20" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Making_User_Activities_Searchable" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter some text here" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cf1-V4-eNb">
+                                <rect key="frame" x="20" y="20" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Prc-sb-1kz"/>
+                                </connections>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="You can now start editing the text" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UdA-rs-iqL">
+                                <rect key="frame" x="20" y="58" width="560" height="522"/>
+                                <color key="backgroundColor" red="0.89674084595959591" green="0.89674084595959591" blue="0.89674084595959591" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cf1-V4-eNb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="0Lb-xE-wYk"/>
+                            <constraint firstItem="cf1-V4-eNb" firstAttribute="trailing" secondItem="UdA-rs-iqL" secondAttribute="trailing" id="1Nz-Vu-fia"/>
+                            <constraint firstAttribute="bottom" secondItem="UdA-rs-iqL" secondAttribute="bottom" constant="20" symbolic="YES" id="aGX-Sr-roy"/>
+                            <constraint firstItem="UdA-rs-iqL" firstAttribute="top" secondItem="cf1-V4-eNb" secondAttribute="bottom" constant="8" symbolic="YES" id="aZj-XW-HK9"/>
+                            <constraint firstItem="UdA-rs-iqL" firstAttribute="leading" secondItem="cf1-V4-eNb" secondAttribute="leading" id="e4s-z0-ieI"/>
+                            <constraint firstItem="cf1-V4-eNb" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="nbe-Ad-ccP"/>
+                            <constraint firstItem="cf1-V4-eNb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="zIG-BO-ZL9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="status" destination="UdA-rs-iqL" id="poS-BK-XA8"/>
+                        <outlet property="textField" destination="cf1-V4-eNb" id="DlF-gc-Vg4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="387"/>
+        </scene>
+    </scenes>
+</document>

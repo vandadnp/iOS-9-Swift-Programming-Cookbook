@@ -1,0 +1,350 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9DF1FB271B830D6600DD7670 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF1FB261B830D6600DD7670 /* AppDelegate.swift */; };
+		9DF1FB291B830D6600DD7670 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF1FB281B830D6600DD7670 /* ViewController.swift */; };
+		9DF1FB2C1B830D6600DD7670 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF1FB2A1B830D6600DD7670 /* Main.storyboard */; };
+		9DF1FB2E1B830D6600DD7670 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DF1FB2D1B830D6600DD7670 /* Assets.xcassets */; };
+		9DF1FB311B830D6600DD7670 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF1FB2F1B830D6600DD7670 /* LaunchScreen.storyboard */; };
+		9DF1FB461B8314C100DD7670 /* SharedCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF1FB431B8314BA00DD7670 /* SharedCode.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9DF1FB421B8314BA00DD7670 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DF1FB3D1B8314BA00DD7670 /* SharedCode.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9D5156861B4439C600B2A1B3;
+			remoteInfo = SharedCode;
+		};
+		9DF1FB441B8314BA00DD7670 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DF1FB3D1B8314BA00DD7670 /* SharedCode.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9D5156901B4439C600B2A1B3;
+			remoteInfo = SharedCodeTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9DF1FB231B830D6600DD7670 /* Creating a Linear Gravity Field on Your UI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Creating a Linear Gravity Field on Your UI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DF1FB261B830D6600DD7670 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9DF1FB281B830D6600DD7670 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9DF1FB2B1B830D6600DD7670 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9DF1FB2D1B830D6600DD7670 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9DF1FB301B830D6600DD7670 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9DF1FB321B830D6600DD7670 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DF1FB3C1B8314B000DD7670 /* Dynamic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dynamic-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		9DF1FB3D1B8314BA00DD7670 /* SharedCode.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SharedCode.xcodeproj; path = ../../shared/SharedCode/SharedCode.xcodeproj; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9DF1FB201B830D6600DD7670 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DF1FB461B8314C100DD7670 /* SharedCode.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9DF1FB1A1B830D6600DD7670 = {
+			isa = PBXGroup;
+			children = (
+				9DF1FB3D1B8314BA00DD7670 /* SharedCode.xcodeproj */,
+				9DF1FB251B830D6600DD7670 /* Creating a Linear Gravity Field on Your UI */,
+				9DF1FB241B830D6600DD7670 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9DF1FB241B830D6600DD7670 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9DF1FB231B830D6600DD7670 /* Creating a Linear Gravity Field on Your UI.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9DF1FB251B830D6600DD7670 /* Creating a Linear Gravity Field on Your UI */ = {
+			isa = PBXGroup;
+			children = (
+				9DF1FB3C1B8314B000DD7670 /* Dynamic-Bridging-Header.h */,
+				9DF1FB261B830D6600DD7670 /* AppDelegate.swift */,
+				9DF1FB281B830D6600DD7670 /* ViewController.swift */,
+				9DF1FB2A1B830D6600DD7670 /* Main.storyboard */,
+				9DF1FB2D1B830D6600DD7670 /* Assets.xcassets */,
+				9DF1FB2F1B830D6600DD7670 /* LaunchScreen.storyboard */,
+				9DF1FB321B830D6600DD7670 /* Info.plist */,
+			);
+			path = "Creating a Linear Gravity Field on Your UI";
+			sourceTree = "<group>";
+		};
+		9DF1FB3E1B8314BA00DD7670 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9DF1FB431B8314BA00DD7670 /* SharedCode.framework */,
+				9DF1FB451B8314BA00DD7670 /* SharedCodeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9DF1FB221B830D6600DD7670 /* Creating a Linear Gravity Field on Your UI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DF1FB351B830D6600DD7670 /* Build configuration list for PBXNativeTarget "Creating a Linear Gravity Field on Your UI" */;
+			buildPhases = (
+				9DF1FB1F1B830D6600DD7670 /* Sources */,
+				9DF1FB201B830D6600DD7670 /* Frameworks */,
+				9DF1FB211B830D6600DD7670 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Creating a Linear Gravity Field on Your UI";
+			productName = "Creating a Linear Gravity Field on Your UI";
+			productReference = 9DF1FB231B830D6600DD7670 /* Creating a Linear Gravity Field on Your UI.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9DF1FB1B1B830D6600DD7670 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = Pixolity;
+				TargetAttributes = {
+					9DF1FB221B830D6600DD7670 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = 9DF1FB1E1B830D6600DD7670 /* Build configuration list for PBXProject "Creating a Linear Gravity Field on Your UI" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9DF1FB1A1B830D6600DD7670;
+			productRefGroup = 9DF1FB241B830D6600DD7670 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 9DF1FB3E1B8314BA00DD7670 /* Products */;
+					ProjectRef = 9DF1FB3D1B8314BA00DD7670 /* SharedCode.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				9DF1FB221B830D6600DD7670 /* Creating a Linear Gravity Field on Your UI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		9DF1FB431B8314BA00DD7670 /* SharedCode.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SharedCode.framework;
+			remoteRef = 9DF1FB421B8314BA00DD7670 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9DF1FB451B8314BA00DD7670 /* SharedCodeTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SharedCodeTests.xctest;
+			remoteRef = 9DF1FB441B8314BA00DD7670 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9DF1FB211B830D6600DD7670 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DF1FB311B830D6600DD7670 /* LaunchScreen.storyboard in Resources */,
+				9DF1FB2E1B830D6600DD7670 /* Assets.xcassets in Resources */,
+				9DF1FB2C1B830D6600DD7670 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9DF1FB1F1B830D6600DD7670 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DF1FB291B830D6600DD7670 /* ViewController.swift in Sources */,
+				9DF1FB271B830D6600DD7670 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9DF1FB2A1B830D6600DD7670 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DF1FB2B1B830D6600DD7670 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9DF1FB2F1B830D6600DD7670 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DF1FB301B830D6600DD7670 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9DF1FB331B830D6600DD7670 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9DF1FB341B830D6600DD7670 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9DF1FB361B830D6600DD7670 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Creating a Linear Gravity Field on Your UI/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "se.pixolity.Creating-a-Linear-Gravity-Field-on-Your-UI";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Dynamic-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		9DF1FB371B830D6600DD7670 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Creating a Linear Gravity Field on Your UI/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "se.pixolity.Creating-a-Linear-Gravity-Field-on-Your-UI";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Dynamic-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9DF1FB1E1B830D6600DD7670 /* Build configuration list for PBXProject "Creating a Linear Gravity Field on Your UI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DF1FB331B830D6600DD7670 /* Debug */,
+				9DF1FB341B830D6600DD7670 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DF1FB351B830D6600DD7670 /* Build configuration list for PBXNativeTarget "Creating a Linear Gravity Field on Your UI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DF1FB361B830D6600DD7670 /* Debug */,
+				9DF1FB371B830D6600DD7670 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9DF1FB1B1B830D6600DD7670 /* Project object */;
+}

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="8164.2" systemVersion="14D136" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="8083.2"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Watch" customModuleProvider="target">
+                    <items>
+                        <label alignment="left" text="iOS App Said" id="BaJ-na-ets"/>
+                        <label alignment="left" text="Waiting..." numberOfLines="6" id="aUE-sk-kxy"/>
+                        <separator alignment="left" id="CDR-Bs-hhZ"/>
+                        <label alignment="left" text="Send a reply" id="Y7D-lx-8tJ"/>
+                        <group width="1" alignment="left" layout="vertical" id="8go-up-yj8">
+                            <items>
+                                <button width="1" alignment="left" title="Hello" id="EsX-Jx-NWd">
+                                    <connections>
+                                        <action selector="sendHello" destination="AgC-eL-Hgc" id="TkP-Qi-DPu"/>
+                                    </connections>
+                                </button>
+                                <button width="1" alignment="left" title="Thank you" id="tj0-rS-rX4">
+                                    <connections>
+                                        <action selector="sendThankYou" destination="AgC-eL-Hgc" id="P1X-Ug-p0N"/>
+                                    </connections>
+                                </button>
+                                <button width="1" alignment="left" title="How are you?" id="8sd-PR-Wgh">
+                                    <connections>
+                                        <action selector="sendHowAreYou" destination="AgC-eL-Hgc" id="2fl-qc-p40"/>
+                                    </connections>
+                                </button>
+                                <button width="1" alignment="left" title="I hear you" id="VJG-H0-7u1">
+                                    <connections>
+                                        <action selector="sendIHearYou" destination="AgC-eL-Hgc" id="z3p-Gk-Zka"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="iosAppReplyLbl" destination="aUE-sk-kxy" id="zou-Wf-s63"/>
+                        <outlet property="repliesGroup" destination="8go-up-yj8" id="qgD-Im-HZm"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Watch" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+    </scenes>
+</document>

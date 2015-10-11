@@ -1,0 +1,52 @@
+[
+  {
+    "action": {
+      "type": "block"
+    },
+    "trigger": {
+      "url-filter": ".*",
+      "resource-type" : ["image"],
+      "if-domain" : ["edition.cnn.com"]
+    }
+  }, 
+  {
+    "action": {
+      "type": "css-display-none",
+      "selector" : "a"
+    },
+    "trigger": {
+      "url-filter": ".*",
+      "if-domain" : ["macrumors.com"]
+    }
+  },
+  {
+    "action": {
+      "type": "css-display-none",
+      "selector" : "a[id='logo']"
+    },
+    "trigger": {
+      "url-filter": ".*",
+      "if-domain" : ["macrumors.com"]
+    }
+  },
+  {
+    "action": {
+      "type": "block"
+    },
+    "trigger": {
+      "url-filter": ".*",
+      "resource-type" : ["image"],
+      "unless-domain" : ["reddit.com"]
+    }
+  },
+  {
+    "action": {
+      "type": "css-display-none",
+      "selector" : "a[href]"
+    },
+    "trigger": {
+      "url-filter": ".*",
+      "if-domain" : ["apple.com"]
+    }
+  }
+]

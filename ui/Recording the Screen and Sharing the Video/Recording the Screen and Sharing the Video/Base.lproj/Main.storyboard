@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8164.2" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="c5y-0U-h7i">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Recording_the_Screen_and_Sharing_the_Video" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rTZ-Ei-9YT">
+                                <rect key="frame" x="20" y="72" width="108" height="30"/>
+                                <state key="normal" title="Start Recording"/>
+                                <connections>
+                                    <action selector="record" destination="BYZ-38-t0r" eventType="touchUpInside" id="WpS-08-6i0"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tVU-dq-aSJ">
+                                <rect key="frame" x="163" y="286" width="275" height="29"/>
+                                <segments>
+                                    <segment title="Play with"/>
+                                    <segment title="This while recording"/>
+                                </segments>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OO0-Nx-gsw">
+                                <rect key="frame" x="20" y="110" width="108" height="30"/>
+                                <state key="normal" title="Stop recording"/>
+                                <connections>
+                                    <action selector="stop" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uon-3C-911"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OO0-Nx-gsw" firstAttribute="top" secondItem="rTZ-Ei-9YT" secondAttribute="bottom" constant="8" symbolic="YES" id="3MG-Eu-OCF"/>
+                            <constraint firstItem="rTZ-Ei-9YT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="4LI-kM-xpo"/>
+                            <constraint firstItem="rTZ-Ei-9YT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="QkQ-Oe-Uce"/>
+                            <constraint firstItem="OO0-Nx-gsw" firstAttribute="trailing" secondItem="rTZ-Ei-9YT" secondAttribute="trailing" id="ajo-hA-Fih"/>
+                            <constraint firstItem="tVU-dq-aSJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="erK-I2-nGo"/>
+                            <constraint firstItem="tVU-dq-aSJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="l7d-0S-c7T"/>
+                            <constraint firstItem="OO0-Nx-gsw" firstAttribute="leading" secondItem="rTZ-Ei-9YT" secondAttribute="leading" id="wbC-Nu-Wzl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hCv-RQ-qQP"/>
+                    <connections>
+                        <outlet property="startBtn" destination="rTZ-Ei-9YT" id="AVR-iC-QPl"/>
+                        <outlet property="stopBtn" destination="OO0-Nx-gsw" id="MUo-oa-LR5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1117" y="374"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0hj-lV-X7L">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c5y-0U-h7i" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OVg-NU-OjY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="dti-gM-CZ7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yeL-Sh-Xhl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="374"/>
+        </scene>
+    </scenes>
+</document>

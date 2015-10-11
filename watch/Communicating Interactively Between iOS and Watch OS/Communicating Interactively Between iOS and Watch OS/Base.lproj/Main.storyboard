@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8164.2" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wag-uf-1QF">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Realtime Communication-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Communicating_Interactively_Between_iOS_and_Watch_OS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type something here..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uLb-cK-0dt">
+                                <rect key="frame" x="20" y="72" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watch Status:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3C-cU-Eim">
+                                <rect key="frame" x="20" y="110" width="123" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="123" id="YVZ-9H-ULd"/>
+                                    <constraint firstAttribute="height" constant="21" id="bEF-Uo-e83"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watch Said:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W1u-jc-rdQ">
+                                <rect key="frame" x="20" y="139" width="123" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="KmU-6X-fga"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N9y-7z-dmH">
+                                <rect key="frame" x="151" y="110" width="429" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0KP-95-Bxm">
+                                <rect key="frame" x="151" y="139" width="429" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="W1u-jc-rdQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="767-xB-gn8"/>
+                            <constraint firstItem="0KP-95-Bxm" firstAttribute="leading" secondItem="W1u-jc-rdQ" secondAttribute="trailing" constant="8" symbolic="YES" id="Ah4-LP-Dah"/>
+                            <constraint firstItem="uLb-cK-0dt" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="Ihh-1D-AN4"/>
+                            <constraint firstItem="A3C-cU-Eim" firstAttribute="firstBaseline" secondItem="N9y-7z-dmH" secondAttribute="firstBaseline" id="JAt-Fn-tOo"/>
+                            <constraint firstItem="N9y-7z-dmH" firstAttribute="leading" secondItem="0KP-95-Bxm" secondAttribute="leading" id="KVQ-jP-gbt"/>
+                            <constraint firstItem="W1u-jc-rdQ" firstAttribute="top" secondItem="A3C-cU-Eim" secondAttribute="bottom" constant="8" symbolic="YES" id="KdH-Yz-rAy"/>
+                            <constraint firstItem="A3C-cU-Eim" firstAttribute="baseline" secondItem="N9y-7z-dmH" secondAttribute="baseline" id="Qlm-Tk-Ojz"/>
+                            <constraint firstItem="A3C-cU-Eim" firstAttribute="top" secondItem="uLb-cK-0dt" secondAttribute="bottom" constant="8" symbolic="YES" id="SAM-mI-Fq0"/>
+                            <constraint firstItem="N9y-7z-dmH" firstAttribute="trailing" secondItem="uLb-cK-0dt" secondAttribute="trailing" id="Whq-FL-FN1"/>
+                            <constraint firstItem="0KP-95-Bxm" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="czr-Pu-Q7r"/>
+                            <constraint firstItem="W1u-jc-rdQ" firstAttribute="firstBaseline" secondItem="0KP-95-Bxm" secondAttribute="firstBaseline" id="fjK-az-Phq"/>
+                            <constraint firstItem="W1u-jc-rdQ" firstAttribute="leading" secondItem="A3C-cU-Eim" secondAttribute="leading" id="g0a-Yl-SQl"/>
+                            <constraint firstItem="0KP-95-Bxm" firstAttribute="trailing" secondItem="N9y-7z-dmH" secondAttribute="trailing" id="mlJ-FD-XP0"/>
+                            <constraint firstItem="A3C-cU-Eim" firstAttribute="leading" secondItem="uLb-cK-0dt" secondAttribute="leading" id="sKS-G2-6Sw"/>
+                            <constraint firstItem="N9y-7z-dmH" firstAttribute="leading" secondItem="A3C-cU-Eim" secondAttribute="trailing" constant="8" symbolic="YES" id="whP-CE-OqB"/>
+                            <constraint firstItem="W1u-jc-rdQ" firstAttribute="baseline" secondItem="0KP-95-Bxm" secondAttribute="baseline" id="y6l-CS-Ijh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Realtime Communication" id="yAt-w1-03r">
+                        <barButtonItem key="rightBarButtonItem" title="Send" id="Oki-g0-BHp">
+                            <connections>
+                                <action selector="send:" destination="BYZ-38-t0r" id="i3e-Xg-dGW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="sendBtn" destination="Oki-g0-BHp" id="0Bx-6b-XrS"/>
+                        <outlet property="textField" destination="uLb-cK-0dt" id="hSR-mw-kYy"/>
+                        <outlet property="watchReplyLbl" destination="0KP-95-Bxm" id="gRJ-xs-JyY"/>
+                        <outlet property="watchStatusLbl" destination="N9y-7z-dmH" id="5hW-it-Uin"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="991" y="356"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="iTf-0G-sTt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wag-uf-1QF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oXy-bI-7vH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="YU8-6L-BYn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B7F-ww-EcE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="179" y="356"/>
+        </scene>
+    </scenes>
+</document>

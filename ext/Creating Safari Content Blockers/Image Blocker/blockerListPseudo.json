@@ -1,0 +1,16 @@
+[
+  {
+    "action": {
+      "type": "block" | "block-cookies" | "css-display-none",
+      "selector" : This is a CSS selector that the action will be applied to
+    },
+    "trigger": {
+      "url-filter": "this is a filter that will be applied on the WHOLE url",
+      "url-filter-is-case-sensitive" : same as url-filter but case sensitive,
+      "resource-type" : ["image" | "style-sheet" | "script" | "font" | etc],
+      "if-domain" : [an array of actual domain names to apply filter on],
+      "unless-domain" : [an array of domain names to exclude from filter],
+      "load-type" : "first-party" | "third-party"
+    }
+  }
+]

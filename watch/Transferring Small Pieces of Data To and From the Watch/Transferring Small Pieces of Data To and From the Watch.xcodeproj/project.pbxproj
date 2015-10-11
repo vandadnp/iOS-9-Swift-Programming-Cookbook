@@ -1,0 +1,573 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9DF5EF8D1B71F84D00E69EF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF5EF8C1B71F84D00E69EF0 /* AppDelegate.swift */; };
+		9DF5EF8F1B71F84D00E69EF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF5EF8E1B71F84D00E69EF0 /* ViewController.swift */; };
+		9DF5EF921B71F84D00E69EF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF5EF901B71F84D00E69EF0 /* Main.storyboard */; };
+		9DF5EF941B71F84D00E69EF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DF5EF931B71F84D00E69EF0 /* Assets.xcassets */; };
+		9DF5EF971B71F84D00E69EF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF5EF951B71F84D00E69EF0 /* LaunchScreen.storyboard */; };
+		9DF5EFA41B71FD5D00E69EF0 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF5EFA21B71FD5D00E69EF0 /* Interface.storyboard */; };
+		9DF5EFA61B71FD5D00E69EF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DF5EFA51B71FD5D00E69EF0 /* Assets.xcassets */; };
+		9DF5EFAD1B71FD5D00E69EF0 /* Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9DF5EFAC1B71FD5D00E69EF0 /* Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9DF5EFB41B71FD5D00E69EF0 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF5EFB31B71FD5D00E69EF0 /* InterfaceController.swift */; };
+		9DF5EFB61B71FD5D00E69EF0 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF5EFB51B71FD5D00E69EF0 /* ExtensionDelegate.swift */; };
+		9DF5EFB81B71FD5D00E69EF0 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF5EFB71B71FD5D00E69EF0 /* NotificationController.swift */; };
+		9DF5EFBA1B71FD5D00E69EF0 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF5EFB91B71FD5D00E69EF0 /* GlanceController.swift */; };
+		9DF5EFBC1B71FD5D00E69EF0 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF5EFBB1B71FD5D00E69EF0 /* ComplicationController.swift */; };
+		9DF5EFBE1B71FD5D00E69EF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DF5EFBD1B71FD5D00E69EF0 /* Assets.xcassets */; };
+		9DF5EFC21B71FD5D00E69EF0 /* Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9DF5EFA01B71FD5D00E69EF0 /* Watch.app */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9DF5EFAE1B71FD5D00E69EF0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DF5EF811B71F84D00E69EF0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9DF5EFAB1B71FD5D00E69EF0;
+			remoteInfo = "Watch Extension";
+		};
+		9DF5EFC01B71FD5D00E69EF0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DF5EF811B71F84D00E69EF0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9DF5EF9F1B71FD5D00E69EF0;
+			remoteInfo = Watch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9DF5EFC61B71FD5D00E69EF0 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				9DF5EFAD1B71FD5D00E69EF0 /* Watch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DF5EFCA1B71FD5D00E69EF0 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				9DF5EFC21B71FD5D00E69EF0 /* Watch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		9DF5EF891B71F84D00E69EF0 /* Transferring Small Pieces of Data To and From the Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Transferring Small Pieces of Data To and From the Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DF5EF8C1B71F84D00E69EF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9DF5EF8E1B71F84D00E69EF0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9DF5EF911B71F84D00E69EF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9DF5EF931B71F84D00E69EF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9DF5EF961B71F84D00E69EF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9DF5EF981B71F84D00E69EF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DF5EFA01B71FD5D00E69EF0 /* Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DF5EFA31B71FD5D00E69EF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		9DF5EFA51B71FD5D00E69EF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9DF5EFA71B71FD5D00E69EF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DF5EFAC1B71FD5D00E69EF0 /* Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DF5EFB21B71FD5D00E69EF0 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		9DF5EFB31B71FD5D00E69EF0 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		9DF5EFB51B71FD5D00E69EF0 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		9DF5EFB71B71FD5D00E69EF0 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		9DF5EFB91B71FD5D00E69EF0 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
+		9DF5EFBB1B71FD5D00E69EF0 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		9DF5EFBD1B71FD5D00E69EF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9DF5EFBF1B71FD5D00E69EF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9DF5EF861B71F84D00E69EF0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DF5EFA91B71FD5D00E69EF0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9DF5EF801B71F84D00E69EF0 = {
+			isa = PBXGroup;
+			children = (
+				9DF5EF8B1B71F84D00E69EF0 /* Transferring Small Pieces of Data To and From the Watch */,
+				9DF5EFA11B71FD5D00E69EF0 /* Watch */,
+				9DF5EFB01B71FD5D00E69EF0 /* Watch Extension */,
+				9DF5EF8A1B71F84D00E69EF0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9DF5EF8A1B71F84D00E69EF0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9DF5EF891B71F84D00E69EF0 /* Transferring Small Pieces of Data To and From the Watch.app */,
+				9DF5EFA01B71FD5D00E69EF0 /* Watch.app */,
+				9DF5EFAC1B71FD5D00E69EF0 /* Watch Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9DF5EF8B1B71F84D00E69EF0 /* Transferring Small Pieces of Data To and From the Watch */ = {
+			isa = PBXGroup;
+			children = (
+				9DF5EF8C1B71F84D00E69EF0 /* AppDelegate.swift */,
+				9DF5EF8E1B71F84D00E69EF0 /* ViewController.swift */,
+				9DF5EF901B71F84D00E69EF0 /* Main.storyboard */,
+				9DF5EF931B71F84D00E69EF0 /* Assets.xcassets */,
+				9DF5EF951B71F84D00E69EF0 /* LaunchScreen.storyboard */,
+				9DF5EF981B71F84D00E69EF0 /* Info.plist */,
+			);
+			path = "Transferring Small Pieces of Data To and From the Watch";
+			sourceTree = "<group>";
+		};
+		9DF5EFA11B71FD5D00E69EF0 /* Watch */ = {
+			isa = PBXGroup;
+			children = (
+				9DF5EFA21B71FD5D00E69EF0 /* Interface.storyboard */,
+				9DF5EFA51B71FD5D00E69EF0 /* Assets.xcassets */,
+				9DF5EFA71B71FD5D00E69EF0 /* Info.plist */,
+			);
+			path = Watch;
+			sourceTree = "<group>";
+		};
+		9DF5EFB01B71FD5D00E69EF0 /* Watch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9DF5EFB31B71FD5D00E69EF0 /* InterfaceController.swift */,
+				9DF5EFB51B71FD5D00E69EF0 /* ExtensionDelegate.swift */,
+				9DF5EFB71B71FD5D00E69EF0 /* NotificationController.swift */,
+				9DF5EFB91B71FD5D00E69EF0 /* GlanceController.swift */,
+				9DF5EFBB1B71FD5D00E69EF0 /* ComplicationController.swift */,
+				9DF5EFBD1B71FD5D00E69EF0 /* Assets.xcassets */,
+				9DF5EFBF1B71FD5D00E69EF0 /* Info.plist */,
+				9DF5EFB11B71FD5D00E69EF0 /* Supporting Files */,
+			);
+			path = "Watch Extension";
+			sourceTree = "<group>";
+		};
+		9DF5EFB11B71FD5D00E69EF0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9DF5EFB21B71FD5D00E69EF0 /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9DF5EF881B71F84D00E69EF0 /* Transferring Small Pieces of Data To and From the Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DF5EF9B1B71F84D00E69EF0 /* Build configuration list for PBXNativeTarget "Transferring Small Pieces of Data To and From the Watch" */;
+			buildPhases = (
+				9DF5EF851B71F84D00E69EF0 /* Sources */,
+				9DF5EF861B71F84D00E69EF0 /* Frameworks */,
+				9DF5EF871B71F84D00E69EF0 /* Resources */,
+				9DF5EFCA1B71FD5D00E69EF0 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9DF5EFC11B71FD5D00E69EF0 /* PBXTargetDependency */,
+			);
+			name = "Transferring Small Pieces of Data To and From the Watch";
+			productName = "Transferring Small Pieces of Data To and From the Watch";
+			productReference = 9DF5EF891B71F84D00E69EF0 /* Transferring Small Pieces of Data To and From the Watch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9DF5EF9F1B71FD5D00E69EF0 /* Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DF5EFC71B71FD5D00E69EF0 /* Build configuration list for PBXNativeTarget "Watch" */;
+			buildPhases = (
+				9DF5EF9E1B71FD5D00E69EF0 /* Resources */,
+				9DF5EFC61B71FD5D00E69EF0 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9DF5EFAF1B71FD5D00E69EF0 /* PBXTargetDependency */,
+			);
+			name = Watch;
+			productName = Watch;
+			productReference = 9DF5EFA01B71FD5D00E69EF0 /* Watch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		9DF5EFAB1B71FD5D00E69EF0 /* Watch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DF5EFC31B71FD5D00E69EF0 /* Build configuration list for PBXNativeTarget "Watch Extension" */;
+			buildPhases = (
+				9DF5EFA81B71FD5D00E69EF0 /* Sources */,
+				9DF5EFA91B71FD5D00E69EF0 /* Frameworks */,
+				9DF5EFAA1B71FD5D00E69EF0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Watch Extension";
+			productName = "Watch Extension";
+			productReference = 9DF5EFAC1B71FD5D00E69EF0 /* Watch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9DF5EF811B71F84D00E69EF0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = Pixolity;
+				TargetAttributes = {
+					9DF5EF881B71F84D00E69EF0 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					9DF5EF9F1B71FD5D00E69EF0 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					9DF5EFAB1B71FD5D00E69EF0 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = 9DF5EF841B71F84D00E69EF0 /* Build configuration list for PBXProject "Transferring Small Pieces of Data To and From the Watch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9DF5EF801B71F84D00E69EF0;
+			productRefGroup = 9DF5EF8A1B71F84D00E69EF0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9DF5EF881B71F84D00E69EF0 /* Transferring Small Pieces of Data To and From the Watch */,
+				9DF5EF9F1B71FD5D00E69EF0 /* Watch */,
+				9DF5EFAB1B71FD5D00E69EF0 /* Watch Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9DF5EF871B71F84D00E69EF0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DF5EF971B71F84D00E69EF0 /* LaunchScreen.storyboard in Resources */,
+				9DF5EF941B71F84D00E69EF0 /* Assets.xcassets in Resources */,
+				9DF5EF921B71F84D00E69EF0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DF5EF9E1B71FD5D00E69EF0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DF5EFA61B71FD5D00E69EF0 /* Assets.xcassets in Resources */,
+				9DF5EFA41B71FD5D00E69EF0 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DF5EFAA1B71FD5D00E69EF0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DF5EFBE1B71FD5D00E69EF0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9DF5EF851B71F84D00E69EF0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DF5EF8F1B71F84D00E69EF0 /* ViewController.swift in Sources */,
+				9DF5EF8D1B71F84D00E69EF0 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DF5EFA81B71FD5D00E69EF0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DF5EFB81B71FD5D00E69EF0 /* NotificationController.swift in Sources */,
+				9DF5EFB61B71FD5D00E69EF0 /* ExtensionDelegate.swift in Sources */,
+				9DF5EFBC1B71FD5D00E69EF0 /* ComplicationController.swift in Sources */,
+				9DF5EFB41B71FD5D00E69EF0 /* InterfaceController.swift in Sources */,
+				9DF5EFBA1B71FD5D00E69EF0 /* GlanceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9DF5EFAF1B71FD5D00E69EF0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9DF5EFAB1B71FD5D00E69EF0 /* Watch Extension */;
+			targetProxy = 9DF5EFAE1B71FD5D00E69EF0 /* PBXContainerItemProxy */;
+		};
+		9DF5EFC11B71FD5D00E69EF0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9DF5EF9F1B71FD5D00E69EF0 /* Watch */;
+			targetProxy = 9DF5EFC01B71FD5D00E69EF0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9DF5EF901B71F84D00E69EF0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DF5EF911B71F84D00E69EF0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9DF5EF951B71F84D00E69EF0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DF5EF961B71F84D00E69EF0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		9DF5EFA21B71FD5D00E69EF0 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DF5EFA31B71FD5D00E69EF0 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9DF5EF991B71F84D00E69EF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9DF5EF9A1B71F84D00E69EF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9DF5EF9C1B71F84D00E69EF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Transferring Small Pieces of Data To and From the Watch/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "se.pixolity.Transferring-Small-Pieces-of-Data-To-and-From-the-Watch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9DF5EF9D1B71F84D00E69EF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Transferring Small Pieces of Data To and From the Watch/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "se.pixolity.Transferring-Small-Pieces-of-Data-To-and-From-the-Watch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		9DF5EFC41B71FD5D00E69EF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				INFOPLIST_FILE = "Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "se.pixolity.Transferring-Small-Pieces-of-Data-To-and-From-the-Watch.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		9DF5EFC51B71FD5D00E69EF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				INFOPLIST_FILE = "Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "se.pixolity.Transferring-Small-Pieces-of-Data-To-and-From-the-Watch.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		9DF5EFC81B71FD5D00E69EF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = Watch_Extension;
+				INFOPLIST_FILE = Watch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "se.pixolity.Transferring-Small-Pieces-of-Data-To-and-From-the-Watch.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		9DF5EFC91B71FD5D00E69EF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = Watch_Extension;
+				INFOPLIST_FILE = Watch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "se.pixolity.Transferring-Small-Pieces-of-Data-To-and-From-the-Watch.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9DF5EF841B71F84D00E69EF0 /* Build configuration list for PBXProject "Transferring Small Pieces of Data To and From the Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DF5EF991B71F84D00E69EF0 /* Debug */,
+				9DF5EF9A1B71F84D00E69EF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DF5EF9B1B71F84D00E69EF0 /* Build configuration list for PBXNativeTarget "Transferring Small Pieces of Data To and From the Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DF5EF9C1B71F84D00E69EF0 /* Debug */,
+				9DF5EF9D1B71F84D00E69EF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9DF5EFC31B71FD5D00E69EF0 /* Build configuration list for PBXNativeTarget "Watch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DF5EFC41B71FD5D00E69EF0 /* Debug */,
+				9DF5EFC51B71FD5D00E69EF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9DF5EFC71B71FD5D00E69EF0 /* Build configuration list for PBXNativeTarget "Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DF5EFC81B71FD5D00E69EF0 /* Debug */,
+				9DF5EFC91B71FD5D00E69EF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9DF5EF811B71F84D00E69EF0 /* Project object */;
+}
