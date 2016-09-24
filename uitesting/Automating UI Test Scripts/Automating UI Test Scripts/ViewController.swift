@@ -14,10 +14,10 @@ class ViewController: UIViewController {
   @IBOutlet var txtField: UITextField!
   
   @IBAction func capitalize() {
-    guard let txt = txtField.text where txt.characters.count > 0 else{
+    guard let txt = txtField.text , txt.characters.count > 0 else{
       return
     }
-    lbl.text = txt.uppercaseString
+    lbl.text = txt.uppercased()
     lbl.accessibilityValue = lbl.text
   }
 

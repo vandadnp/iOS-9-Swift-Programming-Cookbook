@@ -11,21 +11,41 @@ import WatchConnectivity
 
 class ViewController: UIViewController, WCSessionDelegate {
   
+  /** Called when all delegate callbacks for the previously selected watch has occurred. The session can be re-activated for the now selected watch using activateSession. */
+  @available(iOS 9.3, *)
+  public func sessionDidDeactivate(_ session: WCSession) {
+    
+  }
+
+  
+  /** Called when the session can no longer be used to modify or add any new transfers and, all interactive messages will be cancelled, but delegate callbacks for background transfers can still occur. This will happen when the selected watch is being changed. */
+  @available(iOS 9.3, *)
+  public func sessionDidBecomeInactive(_ session: WCSession) {
+    
+  }
+  
+  /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
+  @available(iOS 9.3, *)
+  public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    
+  }
+
+  
   @IBOutlet var statusLbl: UILabel!
   @IBOutlet var sendBtn: UIButton!
   
   var status: String?{
     get{return self.statusLbl.text}
     set{
-      dispatch_async(dispatch_get_main_queue()){
+      DispatchQueue.main.async{
         self.statusLbl.text = newValue
       }
     }
   }
   
-  func session(session: WCSession,
-    didFinishFileTransfer fileTransfer: WCSessionFileTransfer,
-    error: NSError?) {
+  func session(_ session: WCSession,
+    didFinish fileTransfer: WCSessionFileTransfer,
+    error: Error?) {
     
       guard error == nil else{
         status = "Error in transferring"
@@ -40,33 +60,33 @@ class ViewController: UIViewController, WCSessionDelegate {
     
     let fileName = "file.txt"
     
-    let fm = NSFileManager()
+    let fm = FileManager()
     
-    let url = try! fm.URLForDirectory(.CachesDirectory,
-      inDomain: .UserDomainMask, appropriateForURL: nil,
-      create: true).URLByAppendingPathComponent(fileName)
+    let url = try! fm.url(for: .cachesDirectory,
+      in: .userDomainMask, appropriateFor: nil,
+      create: true).appendingPathComponent(fileName)
     
     let text = "Foo Bar"
     
     do{
-      try text.writeToURL(url, atomically: true,
-        encoding: NSUTF8StringEncoding)
+      try text.write(to: url, atomically: true,
+        encoding: String.Encoding.utf8)
     } catch {
       status = "Could not write the file"
       return
     }
     
     let metadata = ["fileName" : fileName]
-    WCSession.defaultSession().transferFile(url, metadata: metadata)
+    WCSession.default().transferFile(url, metadata: metadata)
     
   }
   
-  func updateUiForSession(session: WCSession){
-    status = session.reachable ? "Ready to send" : "Not reachable"
-    sendBtn.enabled = session.reachable
+  func updateUiForSession(_ session: WCSession){
+    status = session.isReachable ? "Ready to send" : "Not reachable"
+    sendBtn.isEnabled = session.isReachable
   }
   
-  func sessionReachabilityDidChange(session: WCSession) {
+  func sessionReachabilityDidChange(_ session: WCSession) {
     updateUiForSession(session)
   }
   
@@ -77,9 +97,9 @@ class ViewController: UIViewController, WCSessionDelegate {
       return
     }
     
-    let session = WCSession.defaultSession()
+    let session = WCSession.default()
     session.delegate = self
-    session.activateSession()
+    session.activate()
     updateUiForSession(session)
     
   }

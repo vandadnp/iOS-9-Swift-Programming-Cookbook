@@ -10,30 +10,30 @@ import Foundation
 
 protocol WithDate{
   var hour: Int {get}
-  var date: NSDate {get}
+  var date: Date {get}
   var fraction: Float {get}
 }
 
 struct Data : WithDate{
   let hour: Int
-  let date: NSDate
+  let date: Date
   let fraction: Float
   var hourAsStr: String{
     return "\(hour)"
   }
 }
 
-extension NSDate{
+extension Date{
   func hour() -> Int{
-    let cal = NSCalendar.currentCalendar()
-    return cal.components(NSCalendarUnit.Hour, fromDate: self).hour
+    let cal = Calendar.current
+    return (cal as NSCalendar).components(NSCalendar.Unit.hour, from: self).hour!
   }
 }
 
-extension CollectionType where Generator.Element : WithDate {
+extension Collection where Iterator.Element : WithDate {
   
-  func dataForNow() -> Generator.Element?{
-    let thisHour = NSDate().hour()
+  func dataForNow() -> Iterator.Element?{
+    let thisHour = Date().hour()
     for d in self{
       if d.hour == thisHour{
         return d
@@ -50,17 +50,17 @@ struct DataProvider{
     
     var all = [Data]()
     
-    let now = NSDate()
-    let cal = NSCalendar.currentCalendar()
-    let units = NSCalendarUnit.Year.union(.Month).union(.Day)
-    let comps = cal.components(units, fromDate: now)
+    let now = Date()
+    let cal = Calendar.current
+    let units = NSCalendar.Unit.year.union(.month).union(.day)
+    var comps = (cal as NSCalendar).components(units, from: now)
     comps.minute = 0
     comps.second = 0
     for i in 1...24{
       comps.hour = i
-      let date = cal.dateFromComponents(comps)!
-      let fraction = Float(comps.hour) / 24.0
-      let data = Data(hour: comps.hour, date: date, fraction: fraction)
+      let date = cal.date(from: comps)!
+      let fraction = Float(comps.hour!) / 24.0
+      let data = Data(hour: comps.hour!, date: date, fraction: fraction)
       all.append(data)
     }
     

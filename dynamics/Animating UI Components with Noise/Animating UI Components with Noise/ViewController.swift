@@ -15,7 +15,7 @@ class ViewController: UIViewController {
   
   lazy var animator: UIDynamicAnimator = {
     let animator = UIDynamicAnimator(referenceView: self.view)
-    animator.debugEnabled = true
+    animator.isDebugEnabled = true
     return animator
     }()
   
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     }()
   
   lazy var noise: UIFieldBehavior = {
-    let noise = UIFieldBehavior.noiseFieldWithSmoothness(0.9,
+    let noise = UIFieldBehavior.noiseField(smoothness: 0.9,
       animationSpeed: 1)
     noise.addItem(self.orangeView)
     return noise
@@ -38,15 +38,15 @@ class ViewController: UIViewController {
     animator.addBehavior(noise)
   }
   
-  @IBAction func panning(sender: UIPanGestureRecognizer) {
+  @IBAction func panning(_ sender: UIPanGestureRecognizer) {
     
     switch sender.state{
-    case .Began:
+    case .began:
       collision.removeItem(orangeView)
       noise.removeItem(orangeView)
-    case .Changed:
-      orangeView.center = sender.locationInView(view)
-    case .Ended, .Cancelled:
+    case .changed:
+      orangeView.center = sender.location(in: view)
+    case .ended, .cancelled:
       collision.addItem(orangeView)
       noise.addItem(orangeView)
     default: ()

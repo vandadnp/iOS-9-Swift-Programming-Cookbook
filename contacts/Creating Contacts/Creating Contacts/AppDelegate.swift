@@ -39,9 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //set the email addresses
     let homeEmail = CNLabeledValue(label: CNLabelHome,
-      value: "foo@home")
+      value: "foo@home" as NSString)
     let workEmail = CNLabeledValue(label: CNLabelWork,
-      value: "bar@home")
+      value: "bar@home" as NSString)
     fooBar.emailAddresses = [homeEmail, workEmail]
     
     //job info
@@ -71,25 +71,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fooBar.note = "Some additional notes"
     
     //birthday
-    let birthday = NSDateComponents()
+    var birthday = DateComponents()
     birthday.year = 1980
     birthday.month = 9
     birthday.day = 27
     fooBar.birthday = birthday
     
     //anniversary
-    let anniversaryDate = NSDateComponents()
+    var anniversaryDate = DateComponents()
     anniversaryDate.month = 6
     anniversaryDate.day = 13
     let anniversary = CNLabeledValue(label: "Anniversary",
-      value: anniversaryDate)
+      value: anniversaryDate as NSDateComponents)
     fooBar.dates = [anniversary]
     
     //finally save
     let request = CNSaveRequest()
-    request.addContact(fooBar, toContainerWithIdentifier: nil)
+    request.add(fooBar, toContainerWithIdentifier: nil)
     do{
-      try store.executeSaveRequest(request)
+      try store.execute(request)
       print("Successfully stored the contact")
     } catch let err{
       print("Failed to save the contact. \(err)")
@@ -97,7 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
   }
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
     ContactAuthorizer.authorizeContactsWithCompletionHandler {succeeded in
       if succeeded{

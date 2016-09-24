@@ -10,7 +10,28 @@ import UIKit
 import WatchConnectivity
 
 class ViewController: UIViewController, WCSessionDelegate,
-NSURLSessionDownloadDelegate {
+URLSessionDownloadDelegate {
+  
+  /** Called when all delegate callbacks for the previously selected watch has occurred. The session can be re-activated for the now selected watch using activateSession. */
+  @available(iOS 9.3, *)
+  public func sessionDidDeactivate(_ session: WCSession) {
+    
+  }
+  
+  
+  /** Called when the session can no longer be used to modify or add any new transfers and, all interactive messages will be cancelled, but delegate callbacks for background transfers can still occur. This will happen when the selected watch is being changed. */
+  @available(iOS 9.3, *)
+  public func sessionDidBecomeInactive(_ session: WCSession) {
+    
+  }
+
+  
+  /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
+  @available(iOS 9.3, *)
+  public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    
+  }
+
   
   @IBOutlet var statusLbl: UILabel!
   @IBOutlet var sendBtn: UIButton!
@@ -19,19 +40,19 @@ NSURLSessionDownloadDelegate {
   
   var people: [String : AnyObject]?{
     didSet{
-      dispatch_async(dispatch_get_main_queue()){
+      DispatchQueue.main.async{
         self.updateSendButton()
       }
     }
   }
   
   func updateSendButton(){
-    sendBtn.enabled = isReachable && isDownloadFinished && people != nil
+    sendBtn.isEnabled = isReachable && isDownloadFinished && people != nil
   }
   
   var isReachable = false{
     didSet{
-      dispatch_async(dispatch_get_main_queue()){
+      DispatchQueue.main.async{
         self.updateSendButton()
         if self.isReachable{
           self.reachabilityStatusLbl.text = "Watch is reachable"
@@ -44,7 +65,7 @@ NSURLSessionDownloadDelegate {
   
   var isDownloadFinished = false{
     didSet{
-      dispatch_async(dispatch_get_main_queue()){
+      DispatchQueue.main.async{
         self.updateSendButton()
       }
     }
@@ -53,7 +74,7 @@ NSURLSessionDownloadDelegate {
   var status: String?{
     get{return self.statusLbl.text}
     set{
-      dispatch_async(dispatch_get_main_queue()){
+      DispatchQueue.main.async{
         self.statusLbl.text = newValue
       }
     }
@@ -63,21 +84,21 @@ NSURLSessionDownloadDelegate {
     
     //if loading HTTP content, make sure you have disabled ATS 
     //for that domain
-    let url = NSURL(string: "http://localhost:8888/people.json")!
-    let req = NSURLRequest(URL: url)
+    let url = URL(string: "http://localhost:8888/people.json")!
+    let req = URLRequest(url: url)
     let id = "se.pixolity.app.backgroundtask"
     
-    let conf = NSURLSessionConfiguration
-      .backgroundSessionConfigurationWithIdentifier(id)
+    let conf = URLSessionConfiguration
+      .background(withIdentifier: id)
     
-    let sess = NSURLSession(configuration: conf, delegate: self,
-      delegateQueue: NSOperationQueue())
+    let sess = Foundation.URLSession(configuration: conf, delegate: self,
+      delegateQueue: OperationQueue())
       
-    sess.downloadTaskWithRequest(req).resume()
+    sess.downloadTask(with: req).resume()
   }
   
-  func URLSession(session: NSURLSession, task: NSURLSessionTask,
-    didCompleteWithError error: NSError?) {
+  func urlSession(_ session: URLSession, task: URLSessionTask,
+    didCompleteWithError error: Error?) {
     
       if error != nil{
         status = "Error happened"
@@ -88,37 +109,37 @@ NSURLSessionDownloadDelegate {
       
   }
   
-  func URLSession(session: NSURLSession,
-    downloadTask: NSURLSessionDownloadTask,
-    didFinishDownloadingToURL location: NSURL){
+  func urlSession(_ session: URLSession,
+    downloadTask: URLSessionDownloadTask,
+    didFinishDownloadingTo location: URL){
       
       isDownloadFinished = true
       
       //got the data, parse as JSON
-      let fm = NSFileManager()
-      let url = try! fm.URLForDirectory(.DownloadsDirectory,
-        inDomain: .UserDomainMask,
-        appropriateForURL: location,
-        create: true).URLByAppendingPathComponent("file.json")
+      let fm = FileManager()
+      let url = try! fm.url(for: .downloadsDirectory,
+        in: .userDomainMask,
+        appropriateFor: location,
+        create: true).appendingPathComponent("file.json")
       
-      do {try fm.removeItemAtURL(url)} catch {}
+      do {try fm.removeItem(at: url)} catch {}
       
       do{
-        try fm.moveItemAtURL(location, toURL: url)
+        try fm.moveItem(at: location, to: url)
       } catch {
         status = "Could not save the file"
         return
       }
       
       //now read the file from url
-      guard let data = NSData(contentsOfURL: url) else{
+      guard let data = try? Data(contentsOf: url) else{
         status = "Could not read the file"
         return
       }
       
       do{
-        let json = try NSJSONSerialization.JSONObjectWithData(data,
-        options: .AllowFragments) as! [String : AnyObject]
+        let json = try JSONSerialization.jsonObject(with: data,
+        options: .allowFragments) as! [String : AnyObject]
         self.people = json
         status = "Successfully downloaded and parsed the file"
       } catch{
@@ -134,7 +155,7 @@ NSURLSessionDownloadDelegate {
       return
     }
     
-    let session = WCSession.defaultSession()
+    let session = WCSession.default()
     
     do{
       try session.updateApplicationContext(people)
@@ -146,8 +167,8 @@ NSURLSessionDownloadDelegate {
     
   }
   
-  func sessionReachabilityDidChange(session: WCSession) {
-    isReachable = session.reachable
+  func sessionReachabilityDidChange(_ session: WCSession) {
+    isReachable = session.isReachable
   }
   
   override func viewDidLoad() {
@@ -158,10 +179,10 @@ NSURLSessionDownloadDelegate {
       return
     }
     
-    let session = WCSession.defaultSession()
+    let session = WCSession.default()
     session.delegate = self
-    session.activateSession()
-    isReachable = session.reachable
+    session.activate()
+    isReachable = session.isReachable
     
   }
 

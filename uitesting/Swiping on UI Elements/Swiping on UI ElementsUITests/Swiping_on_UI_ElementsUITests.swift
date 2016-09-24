@@ -34,7 +34,7 @@ class Swiping_on_UI_ElementsUITests: XCTestCase {
     let app = XCUIApplication()
     let cells = app.cells
     XCTAssertEqual(cells.count, 10)
-    app.cells.elementBoundByIndex(4).swipeLeft()
+    app.cells.element(boundBy: 4).swipeLeft()
     app.buttons["Delete"].tap()
     XCTAssertEqual(cells.count, 9)
     

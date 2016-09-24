@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       "lastName" : "Bar",
       "age" : 30,
       "sex" : 1,
-    ]
+    ] as [String : Any]
     
     for (k, v) in dic where v is Int{
       print("The key \(k) contains an integer value of \(v)")
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       "lastName" : "Bar",
       "age" : 30,
       "sex" : 1,
-    ]
+    ] as [String : Any]
     
     for (k, v) in dic where v is Int && v as! Int > 10{
       print("The key \(k) contains the value of \(v) that is larger than 10")
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
   }
   
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
     example1()
     example2()

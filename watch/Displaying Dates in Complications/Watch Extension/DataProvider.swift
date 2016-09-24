@@ -9,18 +9,18 @@
 import Foundation
 
 protocol Holidayable{
-  var date: NSDate {get}
+  var date: Date {get}
   var name: String {get}
 }
 
 struct Holiday : Holidayable{
-  let date: NSDate
+  let date: Date
   let name: String
 }
 
 struct DataProvider{
   
-  private let holidayNames = [
+  fileprivate let holidayNames = [
     "Father's Day",
     "Mother's Day",
     "Bank Holiday",
@@ -35,7 +35,7 @@ struct DataProvider{
     "Cow Day",
   ]
   
-  private func randomDay() -> Int{
+  fileprivate func randomDay() -> Int{
     return Int(arc4random_uniform(20) + 1)
   }
   
@@ -43,22 +43,23 @@ struct DataProvider{
     
     var all = [Holiday]()
     
-    let now = NSDate()
-    let cal = NSCalendar.currentCalendar()
-    let units = NSCalendarUnit.Year.union(.Month).union(.Day)
-    let comps = cal.components(units, fromDate: now)
+    let now = Date()
+    let cal = Calendar.current
+    let units = NSCalendar.Unit.year.union(.month).union(.day)
+    var comps = (cal as NSCalendar).components(units, from: now)
     
-    var dates = [NSDate]()
+    var dates = [Date]()
     
     for month in 1...12{
       comps.day = randomDay()
       comps.month = month
-      dates.append(cal.dateFromComponents(comps)!)
+      dates.append(cal.date(from: comps)!)
     }
     
     var i = 0
     for date in dates{
-      all.append(Holiday(date: date, name: holidayNames[i++]))
+      all.append(Holiday(date: date, name: holidayNames[i]))
+      i = i+1
     }
     
     return all

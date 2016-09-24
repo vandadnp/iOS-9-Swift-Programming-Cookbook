@@ -11,11 +11,18 @@ import WatchConnectivity
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate{
   
+  /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
+  @available(watchOS 2.2, *)
+  public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    
+  }
+
+  
   var status = ""{
     didSet{
-      dispatch_async(dispatch_get_main_queue()){
+      DispatchQueue.main.async{
         guard let interface =
-          WKExtension.sharedExtension().rootInterfaceController as?
+          WKExtension.shared().rootInterfaceController as?
           InterfaceController else{
             return
         }
@@ -24,8 +31,8 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate{
     }
   }
   
-  func session(session: WCSession,
-    didReceiveUserInfo userInfo: [String : AnyObject]) {
+  func session(_ session: WCSession,
+    didReceiveUserInfo userInfo: [String : Any]) {
     
       guard let bundleVersion = userInfo[kCFBundleIdentifierKey as String]
         as? String else{
@@ -44,9 +51,9 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate{
       return
     }
     
-    let session = WCSession.defaultSession()
+    let session = WCSession.default()
     session.delegate = self
-    session.activateSession()
+    session.activate()
     
   }
   

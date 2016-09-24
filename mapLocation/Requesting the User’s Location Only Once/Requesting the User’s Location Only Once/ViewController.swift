@@ -18,20 +18,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     return m
   }()
   
-  func locationManager(manager: CLLocationManager,
+  func locationManager(_ manager: CLLocationManager,
     didUpdateLocations locations: [CLLocation]) {
       //TODO: now you have access to the location. do your work
   }
   
-  func locationManager(manager: CLLocationManager,
-    didFailWithError error: NSError) {
+  func locationManager(_ manager: CLLocationManager,
+    didFailWithError error: Error) {
     //TODO: handle the error
   }
   
-  func locationManager(manager: CLLocationManager,
-    didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+  func locationManager(_ manager: CLLocationManager,
+    didChangeAuthorization status: CLAuthorizationStatus) {
     
-      if case .AuthorizedWhenInUse = status{
+      if case .authorizedWhenInUse = status{
         manager.requestLocation()
       } else {
         //TODO: we didn't get access, handle this

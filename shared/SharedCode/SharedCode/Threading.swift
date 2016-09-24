@@ -8,6 +8,6 @@
 
 import Foundation
 
-public func onMainThread(f: () -> Void){
-  dispatch_async(dispatch_get_main_queue(), f)
+public func onMainThread(_ f: @escaping () -> Void){
+  DispatchQueue.main.async(execute: f)
 }

@@ -19,13 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   //find a contact named "John" and add a new email address to it
   func example1(){
     
-    NSOperationQueue().addOperationWithBlock{[unowned store] in
-      let predicate = CNContact.predicateForContactsMatchingName("john")
+    OperationQueue().addOperation{[unowned store] in
+      let predicate = CNContact.predicateForContacts(matchingName: "john")
       let toFetch = [CNContactEmailAddressesKey]
       
       do{
-        let contacts = try store.unifiedContactsMatchingPredicate(predicate,
-          keysToFetch: toFetch)
+        let contacts = try store.unifiedContacts(matching: predicate,
+          keysToFetch: toFetch as [CNKeyDescriptor])
         
         guard contacts.count > 0 else{
           print("No contacts found")
@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let newEmail = "newemail@work.com"
         
         for email in contact.emailAddresses{
-          if email.value as! String == newEmail{
+          if email.value as String == newEmail{
             print("This contact already has this email")
             return
           }
@@ -49,14 +49,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let john = contact.mutableCopy() as! CNMutableContact
         
         let emailAddress = CNLabeledValue(label: CNLabelWork,
-          value: "newemail@work.com")
+          value: "newemail@work.com" as NSString)
         
         john.emailAddresses.append(emailAddress)
         
         let req = CNSaveRequest()
-        req.updateContact(john)
+        req.update(john)
         
-        try store.executeSaveRequest(req)
+        try store.execute(req)
         
         print("Successfully added an email")
         
@@ -70,19 +70,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   //find all contacts who don't have a note and set a note for them
   func example2(){
     
-    NSOperationQueue().addOperationWithBlock{[unowned store] in
+    OperationQueue().addOperation{[unowned store] in
       let keys = [CNContactNoteKey]
-      let req = CNContactFetchRequest(keysToFetch: keys)
+      let req = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
       do{
-        try store.enumerateContactsWithFetchRequest(req){contact, stop in
+        try store.enumerateContacts(with: req){contact, stop in
           if contact.note.characters.count == 0{
             
             let updated = contact.mutableCopy() as! CNMutableContact
             updated.note = "Some note"
             let req = CNSaveRequest()
-            req.updateContact(updated)
+            req.update(updated)
             do{
-              try store.executeSaveRequest(req)
+              try store.execute(req)
               print("Successfully added a note")
             } catch let err{
               print(err)
@@ -97,46 +97,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   //remove illegal characters from the first and last name of all contacts
   func example3(){
-    NSOperationQueue().addOperationWithBlock{[unowned store] in
+    OperationQueue().addOperation{[unowned store] in
       let keys = [CNContactGivenNameKey, CNContactFamilyNameKey]
-      let req = CNContactFetchRequest(keysToFetch: keys)
+      let req = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
       do{
-        try store.enumerateContactsWithFetchRequest(req){contact, stop in
+        try store.enumerateContacts(with: req){contact, stop in
           
-          let illegalCharacters = NSCharacterSet.letterCharacterSet()
-            .invertedSet
+          let illegalCharacters = CharacterSet.letters
+            .inverted
           
           let first = NSString(string: contact.givenName)
           let last = NSString(string: contact.familyName)
           
           let foundIllegalCharactersInFirstName =
-          first.rangeOfCharacterFromSet(illegalCharacters).location
+          first.rangeOfCharacter(from: illegalCharacters).location
             != NSNotFound
           
           let foundIllegalCharactersInLastName =
-          last.rangeOfCharacterFromSet(illegalCharacters).location
+          last.rangeOfCharacter(from: illegalCharacters).location
             != NSNotFound
           
           if foundIllegalCharactersInFirstName ||
             foundIllegalCharactersInLastName{
               
               let cleanFirstName =
-              (first.componentsSeparatedByCharactersInSet(illegalCharacters)
-                as NSArray).componentsJoinedByString("")
+              (first.components(separatedBy: illegalCharacters)
+                as NSArray).componentsJoined(by: "")
               
               let cleanLastName =
-              (last.componentsSeparatedByCharactersInSet(illegalCharacters)
-                as NSArray).componentsJoinedByString("")
+              (last.components(separatedBy: illegalCharacters)
+                as NSArray).componentsJoined(by: "")
               
               
               let newContact = contact.mutableCopy() as! CNMutableContact
               let req = CNSaveRequest()
               newContact.givenName = cleanFirstName
               newContact.familyName = cleanLastName
-              req.updateContact(newContact)
+              req.update(newContact)
               
               do{
-                try store.executeSaveRequest(req)
+                try store.execute(req)
                 print("Successfully removed illegal characters from contact")
               } catch let err{
                 print(err)
@@ -151,7 +151,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
   }
   
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
     ContactAuthorizer.authorizeContactsWithCompletionHandler{succeeded in
       if succeeded{

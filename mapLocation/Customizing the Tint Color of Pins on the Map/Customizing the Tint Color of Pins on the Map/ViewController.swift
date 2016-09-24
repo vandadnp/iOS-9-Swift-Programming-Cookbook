@@ -21,12 +21,12 @@ class ViewController: UIViewController, MKMapViewDelegate {
       subtitle: "Stockholm, Sweden")]
     }()
   
-  func mapView(mapView: MKMapView,
-    viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+  func mapView(_ mapView: MKMapView,
+    viewFor annotation: MKAnnotation) -> MKAnnotationView? {
       
       let view: MKPinAnnotationView
-      if let v = mapView.dequeueReusableAnnotationViewWithIdentifier(
-        color.toString()) where v is MKPinAnnotationView{
+      if let v = mapView.dequeueReusableAnnotationView(
+        withIdentifier: color.toString()) , v is MKPinAnnotationView{
           view = v as! MKPinAnnotationView
       } else {
         view = MKPinAnnotationView(annotation: annotation,
@@ -40,7 +40,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
   }
   
   
-  override func viewDidAppear(animated: Bool) {
+  override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     
     map.removeAnnotations(annotations)

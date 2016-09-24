@@ -27,7 +27,7 @@ class ViewController: UIViewController {
       MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeTransit
     ]
     
-    MKMapItem.openMapsWithItems([src, des], launchOptions: options)
+    MKMapItem.openMaps(with: [src, des], launchOptions: options)
     
   }
   

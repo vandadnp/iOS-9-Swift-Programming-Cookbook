@@ -16,12 +16,12 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    map.mapType = .SatelliteFlyover
+    map.mapType = .satelliteFlyover
     map.showsBuildings = true
     
   }
   
-  override func viewDidAppear(animated: Bool) {
+  override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     
     let loc = CLLocationCoordinate2D(latitude: 59.328564,
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     let pitch = CGFloat(45)
     let heading: CLLocationDirection = 90
     
-    let c = MKMapCamera(lookingAtCenterCoordinate: loc,
+    let c = MKMapCamera(lookingAtCenter: loc,
       fromDistance: altitude, pitch: pitch, heading: heading)
     
     map.setCamera(c, animated: true)

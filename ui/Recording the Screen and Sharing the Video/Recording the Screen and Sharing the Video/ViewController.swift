@@ -15,48 +15,49 @@ RPPreviewViewControllerDelegate {
   @IBOutlet var startBtn: UIButton!
   @IBOutlet var stopBtn: UIButton!
   
-  func previewControllerDidFinish(previewController: RPPreviewViewController) {
+  func previewControllerDidFinish(_ previewController: RPPreviewViewController) {
     print("Finished the preview")
-    dismissViewControllerAnimated(true, completion: nil)
-    startBtn.enabled = true
-    stopBtn.enabled = false
+    dismiss(animated: true, completion: nil)
+    startBtn.isEnabled = true
+    stopBtn.isEnabled = false
   }
   
-  func previewController(previewController: RPPreviewViewController,
+  func previewController(_ previewController: RPPreviewViewController,
     didFinishWithActivityTypes activityTypes: Set<String>) {
       print("Preview finished activities \(activityTypes)")
   }
   
-  func screenRecorderDidChangeAvailability(screenRecorder: RPScreenRecorder) {
+  func screenRecorderDidChangeAvailability(_ screenRecorder: RPScreenRecorder) {
     print("Screen recording availability changed")
   }
   
-  func screenRecorder(screenRecorder: RPScreenRecorder,
-    didStopRecordingWithError error: NSError,
+  func screenRecorder(_ screenRecorder: RPScreenRecorder,
+    didStopRecordingWithError error: Error,
     previewViewController: RPPreviewViewController?) {
     print("Screen recording finished")
   }
   
-  let recorder = RPScreenRecorder.sharedRecorder()
+  let recorder = RPScreenRecorder.shared()
 
   @IBAction func record() {
     
-    startBtn.enabled = true
-    stopBtn.enabled = false
+    startBtn.isEnabled = true
+    stopBtn.isEnabled = false
     
-    guard recorder.available else{
+    guard recorder.isAvailable else{
       print("Cannot record the screen")
       return
     }
     
     recorder.delegate = self
     
-    recorder.startRecordingWithMicrophoneEnabled(true){err in
-      guard err == nil else {
-        if err!.code == RPRecordingErrorCode.UserDeclined.rawValue{
+    recorder.startRecording(withMicrophoneEnabled: true){err in
+      
+      if let error = err as? NSError{
+        if error.code == RPRecordingErrorCode.userDeclined.rawValue{
           print("User declined app recording")
         }
-        else if err!.code == RPRecordingErrorCode.InsufficientStorage.rawValue{
+        else if error.code == RPRecordingErrorCode.insufficientStorage.rawValue{
           print("Not enough storage to start recording")
         }
         else {
@@ -66,8 +67,8 @@ RPPreviewViewControllerDelegate {
       }
       
       print("Successfully started recording")
-      self.startBtn.enabled = false
-      self.stopBtn.enabled = true
+      self.startBtn.isEnabled = false
+      self.stopBtn.isEnabled = true
       
     }
     
@@ -75,18 +76,18 @@ RPPreviewViewControllerDelegate {
   
   @IBAction func stop() {
     
-    recorder.stopRecordingWithHandler{controller, err in
+    recorder.stopRecording{controller, err in
       
-      guard let previewController = controller where err == nil else {
-        self.startBtn.enabled = true
-        self.stopBtn.enabled = false
+      guard let previewController = controller , err == nil else {
+        self.startBtn.isEnabled = true
+        self.stopBtn.isEnabled = false
         print("Failed to stop recording")
         return
       }
       
       previewController.previewControllerDelegate = self
       
-      self.presentViewController(previewController, animated: true,
+      self.present(previewController, animated: true,
         completion: nil)
       
     }

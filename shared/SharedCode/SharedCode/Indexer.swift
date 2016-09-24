@@ -10,17 +10,17 @@ import Foundation
 import CoreSpotlight
 import MobileCoreServices
 
-public class Indexer{
+open class Indexer{
   
   public init(){
     //
   }
   
-  public func doIndex(){
+  open func doIndex(){
     
     //delete the existing indexed items
-    CSSearchableIndex.defaultSearchableIndex()
-      .deleteAllSearchableItemsWithCompletionHandler {err in
+    CSSearchableIndex.default()
+      .deleteAllSearchableItems {err in
         if let err = err{
           print("Error in deleting \(err)")
         }
@@ -32,12 +32,12 @@ public class Indexer{
     attr.title = "My item"
     attr.contentDescription = "My description"
     attr.path = "http://reddit.com"
-    attr.contentURL = NSURL(string: attr.path!)!
+    attr.contentURL = URL(string: attr.path!)!
     attr.keywords = ["reddit", "subreddit", "today", "i", "learned"]
     
-    if let url = NSBundle(forClass: self.dynamicType)
-      .URLForResource("Icon", withExtension: "png"){
-        attr.thumbnailData = NSData(contentsOfURL: url)
+    if let url = Bundle(for: type(of: self))
+      .url(forResource: "Icon", withExtension: "png"){
+        attr.thumbnailData = try? Data(contentsOf: url)
     }
     
     //searchable item
@@ -45,15 +45,15 @@ public class Indexer{
       uniqueIdentifier: attr.contentURL!.absoluteString,
       domainIdentifier: nil, attributeSet: attr)
     
-    let cal = NSCalendar.currentCalendar()
+    let cal = Calendar.current
     
     //our content expires in 20 seconds
-    item.expirationDate = cal.dateFromComponents(cal
-      .componentsInTimeZone(cal.timeZone, fromDate:
-        NSDate().dateByAddingTimeInterval(20)))
+    item.expirationDate = cal.date(from: cal
+      .dateComponents(in: cal.timeZone, from:
+        Date().addingTimeInterval(20)))
     
     //now index the item
-    CSSearchableIndex.defaultSearchableIndex()
+    CSSearchableIndex.default()
       .indexSearchableItems([item]) {err in
         guard err == nil else{
           print("Error occurred \(err!)")

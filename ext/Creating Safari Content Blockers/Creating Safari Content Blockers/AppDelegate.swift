@@ -14,17 +14,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-  func application(application: UIApplication,
+  func application(_ application: UIApplication,
     didFinishLaunchingWithOptions
-    launchOptions: [NSObject: AnyObject]?) -> Bool {
+    launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     return true
   }
 
-  func applicationDidBecomeActive(application: UIApplication) {
+  func applicationDidBecomeActive(_ application: UIApplication) {
     
     //TODO: replace this with your own content blocker's identifier
     let id = "se.pixolity.Creating-Safari-Content-Blockers.Image-Blocker"
-    SFContentBlockerManager.reloadContentBlockerWithIdentifier(id) {error in
+    SFContentBlockerManager.reloadContentBlocker(withIdentifier: id) {error in
       guard error == nil else {
         //an error happened, handle it
         print("Failed to reload the blocker")

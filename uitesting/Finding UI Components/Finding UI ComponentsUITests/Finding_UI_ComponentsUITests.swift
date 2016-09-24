@@ -29,9 +29,9 @@ class Finding_UI_ComponentsUITests: XCTestCase {
   
   func testExample1() {
     let app = XCUIApplication()
-    let view = app.windows.childrenMatchingType(.Unknown)
-    let innerView = view.childrenMatchingType(.Unknown)
-    let btn = innerView.childrenMatchingType(.Button).elementBoundByIndex(0)
+    let view = app.windows.children(matching: .other)
+    let innerView = view.children(matching: .other)
+    let btn = innerView.children(matching: .button).element(boundBy: 0)
     XCTAssert(btn.exists)
     btn.tap()
   }
@@ -39,30 +39,30 @@ class Finding_UI_ComponentsUITests: XCTestCase {
   func testExample2(){
     let app = XCUIApplication()
     
-    let btn = app.windows.childrenMatchingType(.Unknown)
-      .descendantsMatchingType(.Button).elementBoundByIndex(0)
+    let btn = app.windows.children(matching: .other)
+      .descendants(matching: .button).element(boundBy: 0)
     
     XCTAssert(btn.exists)
     btn.tap()
   }
   
   func testExample3(){
-    let btn = XCUIApplication().buttons.elementBoundByIndex(0)
+    let btn = XCUIApplication().buttons.element(boundBy: 0)
     XCTAssert(btn.exists)
     btn.tap()
   }
   
   func testExample4(){
     
-    let mainView = XCUIApplication().windows.childrenMatchingType(.Unknown)
+    let mainView = XCUIApplication().windows.children(matching: .other)
     
-    let viewsWithButton = mainView.descendantsMatchingType(.Unknown)
-      .containingType(.Button, identifier: nil)
+    let viewsWithButton = mainView.descendants(matching: .other)
+      .containing(.button, identifier: nil)
     
     XCTAssert(viewsWithButton.count > 0)
     
-    let btn = viewsWithButton.childrenMatchingType(.Button)
-      .elementBoundByIndex(0)
+    let btn = viewsWithButton.children(matching: .button)
+      .element(boundBy: 0)
     
     XCTAssert(btn.exists)
     
@@ -75,12 +75,12 @@ class Finding_UI_ComponentsUITests: XCTestCase {
     
     let app = XCUIApplication()
     
-    let btns = app.buttons.matchingPredicate(
+    let btns = app.buttons.matching(
       NSPredicate(format: "title like[c] 'Button'"))
     
     XCTAssert(btns.count >= 1)
     
-    let btn = btns.elementBoundByIndex(0)
+    let btn = btns.element(boundBy: 0)
     
     XCTAssert(btn.exists)
     
@@ -90,13 +90,13 @@ class Finding_UI_ComponentsUITests: XCTestCase {
     
     let app = XCUIApplication()
     
-    let disabledBtns = app.buttons.containingPredicate(
+    let disabledBtns = app.buttons.containing(
       NSPredicate(format: "enabled == false"))
     
     XCTAssert(disabledBtns.count > 1)
     
     for n in 0..<disabledBtns.count{
-      let btn = disabledBtns.elementBoundByIndex(n)
+      let btn = disabledBtns.element(boundBy: n)
       XCTAssert(btn.exists)
     }
     

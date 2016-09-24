@@ -115,7 +115,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     print("Took \(x) milliseconds")
   }
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
     
     example1()

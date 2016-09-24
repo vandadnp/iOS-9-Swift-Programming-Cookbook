@@ -15,7 +15,7 @@ class ViewController: UIViewController {
   
   lazy var animator: UIDynamicAnimator = {
     let animator = UIDynamicAnimator(referenceView: self.view)
-    animator.debugEnabled = true
+    animator.isDebugEnabled = true
     return animator
     }()
   
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     }()
   
   lazy var noise: UIFieldBehavior = {
-    let noise = UIFieldBehavior.noiseFieldWithSmoothness(0.9,
+    let noise = UIFieldBehavior.noiseField(smoothness: 0.9,
       animationSpeed: 1)
     noise.addItems(self.views)
     return noise

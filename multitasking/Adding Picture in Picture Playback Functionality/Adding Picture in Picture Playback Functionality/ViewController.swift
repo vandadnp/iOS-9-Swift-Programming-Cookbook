@@ -31,26 +31,26 @@ class ViewController: UIViewController, AVPictureInPictureControllerDelegate {
   lazy var player: AVPlayer = {
     let p = AVPlayer()
     p.addObserver(self, forKeyPath: currentItemStatus,
-      options: .New, context: &kvoContext)
+      options: .new, context: &kvoContext)
     return p
   }()
   
   var pipController: AVPictureInPictureController?
   
-  var videoUrl: NSURL? = nil{
+  var videoUrl: URL? = nil{
     didSet{
       if let u = videoUrl{
-        let asset = AVAsset(URL: u)
+        let asset = AVAsset(url: u)
         let item = AVPlayerItem(asset: asset,
           automaticallyLoadedAssetKeys: ["playable"])
-        player.replaceCurrentItemWithPlayerItem(item)
+        player.replaceCurrentItem(with: item)
         pipView.pipLayerPlayer = player
       }
     }
   }
   
-  var embeddedVideo: NSURL?{
-    return NSBundle.mainBundle().URLForResource("video", withExtension: "mp4")
+  var embeddedVideo: URL?{
+    return Bundle.main.url(forResource: "video", withExtension: "mp4")
   }
   
   func isPipSupported() -> Bool{
@@ -80,7 +80,7 @@ class ViewController: UIViewController, AVPictureInPictureControllerDelegate {
     }
     
     controller.addObserver(self, forKeyPath: pipPossible,
-      options: .New, context: &kvoContext)
+      options: .new, context: &kvoContext)
   }
   
   @IBAction func play() {
@@ -112,9 +112,9 @@ class ViewController: UIViewController, AVPictureInPictureControllerDelegate {
     }
     
     controller.addObserver(self, forKeyPath: pipPossible,
-      options: .New, context: &kvoContext)
+      options: .new, context: &kvoContext)
     
-    if controller.pictureInPicturePossible{
+    if controller.isPictureInPicturePossible{
       controller.startPictureInPicture()
     } else {
       alert("Pip is not possible")
@@ -122,31 +122,31 @@ class ViewController: UIViewController, AVPictureInPictureControllerDelegate {
     
   }
   
-  override func observeValueForKeyPath(keyPath: String?,
-    ofObject object: AnyObject?,
-    change: [String : AnyObject]?,
-    context: UnsafeMutablePointer<Void>) {
+  override func observeValue(forKeyPath keyPath: String?,
+    of object: Any?,
+    change: [NSKeyValueChangeKey : Any]?,
+    context: UnsafeMutableRawPointer?) {
       
       guard context == &kvoContext else{
         return
       }
       
       if keyPath == pipPossible{
-        guard let possibleInt = change?[NSKeyValueChangeNewKey]
+        guard let possibleInt = change?[NSKeyValueChangeKey.newKey]
           as? NSNumber else{
-            beginPipBtn.enabled = false
+            beginPipBtn.isEnabled = false
             return
         }
         
-        beginPipBtn.enabled = possibleInt.boolValue
+        beginPipBtn.isEnabled = possibleInt.boolValue
         
       }
       
       else if keyPath == currentItemStatus{
         
-        guard let statusInt = change?[NSKeyValueChangeNewKey] as? NSNumber,
-          let status = AVPlayerItemStatus(rawValue: statusInt.integerValue)
-          where status == .ReadyToPlay else{
+        guard let statusInt = change?[NSKeyValueChangeKey.newKey] as? NSNumber,
+          let status = AVPlayerItemStatus(rawValue: statusInt.intValue)
+          , status == .readyToPlay else{
             return
         }
         

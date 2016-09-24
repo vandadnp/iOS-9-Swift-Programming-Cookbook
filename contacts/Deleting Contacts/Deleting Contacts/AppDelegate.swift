@@ -18,14 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   let store = CNContactStore()
 
   func example1(){
-    NSOperationQueue().addOperationWithBlock{[unowned store] in
-      let predicate = CNContact.predicateForContactsMatchingName("john")
+    OperationQueue().addOperation{[unowned store] in
+      let predicate = CNContact.predicateForContacts(matchingName: "john")
       let toFetch = [CNContactEmailAddressesKey]
       
       do{
         
-        let contacts = try store.unifiedContactsMatchingPredicate(predicate,
-          keysToFetch: toFetch)
+        let contacts = try store.unifiedContacts(matching: predicate,
+          keysToFetch: toFetch as [CNKeyDescriptor])
         
         guard contacts.count > 0 else{
           print("No contacts found")
@@ -39,10 +39,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let req = CNSaveRequest()
         let mutableContact = contact.mutableCopy() as! CNMutableContact
-        req.deleteContact(mutableContact)
+        req.delete(mutableContact)
         
         do{
-          try store.executeSaveRequest(req)
+          try store.execute(req)
           print("Successfully deleted the user")
           
         } catch let e{
@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
   }
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     ContactAuthorizer.authorizeContactsWithCompletionHandler{
       if $0{
         self.example1()

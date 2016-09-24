@@ -14,11 +14,11 @@ class ViewController: UIViewController, CNContactViewControllerDelegate{
   
   let store = CNContactStore()
   
-  func contactViewController(viewController: CNContactViewController,
-    didCompleteWithContact contact: CNContact?) {
+  func contactViewController(_ viewController: CNContactViewController,
+    didCompleteWith contact: CNContact?) {
       
       //whatever happens, pop back to our view controller
-      defer{navigationController?.popViewControllerAnimated(true)}
+      defer{let _ = navigationController?.popViewController(animated: true)}
     
       guard let contact = contact else{
         print("The contact creation was cancelled")

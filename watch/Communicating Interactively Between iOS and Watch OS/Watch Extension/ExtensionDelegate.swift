@@ -11,6 +11,13 @@ import WatchConnectivity
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate{
   
+  /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
+  @available(watchOS 2.2, *)
+  public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    //
+  }
+
+  
   var isReachable = false{
     willSet{
       self.rootController?.repliesGroup.setHidden(!newValue)
@@ -20,7 +27,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate{
   var rootController: InterfaceController?{
     get{
       guard let interface =
-        WKExtension.sharedExtension().rootInterfaceController as?
+        WKExtension.shared().rootInterfaceController as?
         InterfaceController else{
           return nil
       }
@@ -30,15 +37,15 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate{
   
   var iosAppReply = ""{
     didSet{
-      dispatch_async(dispatch_get_main_queue()){
+      DispatchQueue.main.async{
         self.rootController?.iosAppReplyLbl.setText(self.iosAppReply)
       }
     }
   }
   
-  func session(session: WCSession,
-    didReceiveMessage message: [String : AnyObject],
-    replyHandler: ([String : AnyObject]) -> Void) {
+  func session(_ session: WCSession,
+    didReceiveMessage message: [String : Any],
+    replyHandler: @escaping ([String : Any]) -> Void) {
       
       guard message["msg"] is String else{
         replyHandler(["msg" : "failed"])
@@ -50,8 +57,8 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate{
     
   }
   
-  func sessionReachabilityDidChange(session: WCSession) {
-    isReachable = session.reachable
+  func sessionReachabilityDidChange(_ session: WCSession) {
+    isReachable = session.isReachable
   }
   
   func applicationDidFinishLaunching() {
@@ -61,10 +68,10 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate{
       return
     }
     
-    let session = WCSession.defaultSession()
+    let session = WCSession.default()
     session.delegate = self
-    session.activateSession()
-    isReachable = session.reachable
+    session.activate()
+    isReachable = session.isReachable
     
   }
   

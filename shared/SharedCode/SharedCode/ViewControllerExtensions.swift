@@ -10,15 +10,15 @@ import Foundation
 import UIKit
 
 public extension UIViewController{
-  func alert(txt: String){
+  func alert(_ txt: String){
     let c = UIAlertController(title: nil, message: txt,
-      preferredStyle: .Alert)
+      preferredStyle: .alert)
     
     c.addAction(UIAlertAction(title: "OK",
-      style: .Default, handler: {action in
-        self.dismissViewControllerAnimated(true, completion: nil)
+      style: .default, handler: {action in
+        self.dismiss(animated: true, completion: nil)
     }))
     
-    presentViewController(c, animated: true, completion: nil)
+    present(c, animated: true, completion: nil)
   }
 }

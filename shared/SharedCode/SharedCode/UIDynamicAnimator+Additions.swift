@@ -9,7 +9,7 @@
 import Foundation
 
 extension UIDynamicAnimator{
-  public func addBehaviors(behaviors: [UIDynamicBehavior]){
+  public func addBehaviors(_ behaviors: [UIDynamicBehavior]){
     for behavior in behaviors{
       addBehavior(behavior)
     }

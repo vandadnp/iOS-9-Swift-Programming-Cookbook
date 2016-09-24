@@ -13,7 +13,7 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate{
 
   @IBOutlet var textView: UITextView!
   
-  @IBAction func read(sender: AnyObject) {
+  @IBAction func read(_ sender: AnyObject) {
     
     guard let voice = AVSpeechSynthesisVoice(identifier:
       AVSpeechSynthesisVoiceIdentifierAlex) else{
@@ -30,7 +30,7 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate{
     
     let alex = AVSpeechSynthesizer()
     alex.delegate = self
-    alex.speakUtterance(toSay)
+    alex.speak(toSay)
     
   }
   

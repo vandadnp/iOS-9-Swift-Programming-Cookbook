@@ -15,7 +15,7 @@ class ViewController: UIViewController {
   
   lazy var animator: UIDynamicAnimator = {
     let animator = UIDynamicAnimator(referenceView: self.view)
-    animator.debugEnabled = true
+    animator.isDebugEnabled = true
     return animator
     }()
   
@@ -28,14 +28,14 @@ class ViewController: UIViewController {
   lazy var gravity: UIFieldBehavior = {
     let vector = CGVector(dx: 0.4, dy: 1.0)
     let gravity =
-    UIFieldBehavior.linearGravityFieldWithVector(vector)
+    UIFieldBehavior.linearGravityField(direction: vector)
     gravity.addItem(self.orangeView)
     return gravity
     }()
   
   lazy var velocity: UIFieldBehavior = {
     let vector = CGVector(dx: -0.4, dy: -0.5)
-    let velocity = UIFieldBehavior.velocityFieldWithVector(vector)
+    let velocity = UIFieldBehavior.velocityField(direction: vector)
     velocity.position = self.view.center
     velocity.region = UIRegion(radius: 100.0)
     velocity.addItem(self.orangeView)
@@ -51,16 +51,16 @@ class ViewController: UIViewController {
     animator.addBehaviors(behaviors)
   }
   
-  @IBAction func panning(sender: UIPanGestureRecognizer) {
+  @IBAction func panning(_ sender: UIPanGestureRecognizer) {
     
     switch sender.state{
-    case .Began:
+    case .began:
       collision.removeItem(orangeView)
       gravity.removeItem(orangeView)
       velocity.removeItem(orangeView)
-    case .Changed:
-      orangeView.center = sender.locationInView(view)
-    case .Ended, .Cancelled:
+    case .changed:
+      orangeView.center = sender.location(in: view)
+    case .ended, .cancelled:
       collision.addItem(orangeView)
       gravity.addItem(orangeView)
       velocity.addItem(orangeView)

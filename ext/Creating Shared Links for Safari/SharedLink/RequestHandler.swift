@@ -10,13 +10,13 @@ import Foundation
 
 class RequestHandler: NSObject, NSExtensionRequestHandling {
   
-  func beginRequestWithExtensionContext(context: NSExtensionContext) {
+  func beginRequest(with context: NSExtensionContext) {
     let extensionItem = NSExtensionItem()
     
     extensionItem.userInfo = [
       "uniqueIdentifier": "uniqueIdentifierForSampleItem",
       "urlString": "http://reddit.com/r/askreddit",
-      "date": NSDate()
+      "date": Date()
     ]
     
     extensionItem.attributedTitle = NSAttributedString(string: "Reddit")
@@ -24,15 +24,15 @@ class RequestHandler: NSObject, NSExtensionRequestHandling {
     extensionItem.attributedContentText = NSAttributedString(
       string: "AskReddit, one of the best subreddits there is")
     
-    guard let img = NSBundle.mainBundle().URLForResource("ExtIcon",
+    guard let img = Bundle.main.url(forResource: "ExtIcon",
       withExtension: "png") else {
-        context.completeRequestReturningItems(nil, completionHandler: nil)
+        context.completeRequest(returningItems: nil, completionHandler: nil)
         return
     }
     
-    extensionItem.attachments = [NSItemProvider(contentsOfURL: img)!]
+    extensionItem.attachments = [NSItemProvider(contentsOf: img)!]
     
-    context.completeRequestReturningItems([extensionItem], completionHandler: nil)
+    context.completeRequest(returningItems: [extensionItem], completionHandler: nil)
   }
   
 }

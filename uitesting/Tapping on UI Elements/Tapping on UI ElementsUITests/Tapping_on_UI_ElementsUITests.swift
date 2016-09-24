@@ -30,7 +30,7 @@ class Tapping_on_UI_ElementsUITests: XCTestCase {
   func testExample() {
 
     let app = XCUIApplication()
-    let view = app.descendantsMatchingType(.Unknown)["myView"]
+    let view = app.descendants(matching: .other)["myView"]
     
     XCTAssert(view.exists)
     XCTAssert(view.value as! String == "untapped")

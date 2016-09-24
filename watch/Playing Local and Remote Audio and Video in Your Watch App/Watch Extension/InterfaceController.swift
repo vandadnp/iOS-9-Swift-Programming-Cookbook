@@ -15,7 +15,7 @@ class InterfaceController: WKInterfaceController {
   
   var status = ""{
     willSet{
-      dispatch_async(dispatch_get_main_queue()){
+      DispatchQueue.main.async{
         self.statusLbl.setText(newValue)
       }
     }
@@ -23,21 +23,21 @@ class InterfaceController: WKInterfaceController {
   
   @IBAction func play() {
     
-    guard let url = NSURL(string: "http://localhost:8888/video.mp4") else{
+    guard let url = URL(string: "http://localhost:8888/video.mp4") else{
       status = "Could not create url"
       return
     }
     
-    let gravity = WKVideoGravity.ResizeAspectFill.rawValue
+    let gravity = WKVideoGravity.resizeAspectFill.rawValue
     
     let options = [
-      WKMediaPlayerControllerOptionsAutoplayKey : NSNumber(bool: true),
-      WKMediaPlayerControllerOptionsStartTimeKey : 4.0 as NSTimeInterval,
+      WKMediaPlayerControllerOptionsAutoplayKey : NSNumber(value: true as Bool),
+      WKMediaPlayerControllerOptionsStartTimeKey : 4.0 as TimeInterval,
       WKMediaPlayerControllerOptionsVideoGravityKey : gravity,
-      WKMediaPlayerControllerOptionsLoopsKey : NSNumber(bool: true),
-    ]
+      WKMediaPlayerControllerOptionsLoopsKey : NSNumber(value: true as Bool),
+    ] as [String : Any]
     
-    presentMediaPlayerControllerWithURL(url, options: options) {
+    presentMediaPlayerController(with: url, options: options) {
       didPlayToEnd, endTime, error in
       
       self.dismissMediaPlayerController()

@@ -12,7 +12,7 @@ import SharedCode
 
 class ViewController: UIViewController, CNContactPickerDelegate {
   
-  func contactPickerDidCancel(picker: CNContactPickerViewController) {
+  func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
     print("Cancelled picking a contact")
   }
   
@@ -22,7 +22,7 @@ class ViewController: UIViewController, CNContactPickerDelegate {
   //for newer Xcode versions, I wouldn't be able to see if it compiles
   //fine or not
   func commentedOutForExample4(){
-    func contactPicker(picker: CNContactPickerViewController,
+    func contactPicker(_ picker: CNContactPickerViewController,
       didSelectContact contact: CNContact) {
         
         print("Selected a contact")
@@ -47,7 +47,7 @@ class ViewController: UIViewController, CNContactPickerDelegate {
     
     controller.delegate = self
     
-    navigationController?.presentViewController(controller,
+    navigationController?.present(controller,
       animated: true, completion: nil)
   }
   
@@ -64,7 +64,7 @@ class ViewController: UIViewController, CNContactPickerDelegate {
         "phoneNumbers.@count > 0 && givenName BEGINSWITH 'John'",
         argumentArray: nil)
     
-    navigationController?.presentViewController(controller,
+    navigationController?.present(controller,
       animated: true, completion: nil)
     
   }
@@ -81,12 +81,12 @@ class ViewController: UIViewController, CNContactPickerDelegate {
         "phoneNumbers.@count > 0",
         argumentArray: nil)
     
-    navigationController?.presentViewController(controller,
+    navigationController?.present(controller,
       animated: true, completion: nil)
   }
   
-  func contactPicker(picker: CNContactPickerViewController,
-    didSelectContactProperty contactProperty: CNContactProperty) {
+  func contactPicker(_ picker: CNContactPickerViewController,
+    didSelect contactProperty: CNContactProperty) {
       
       print("Selected a property")
       
@@ -107,12 +107,12 @@ class ViewController: UIViewController, CNContactPickerDelegate {
     controller.predicateForSelectionOfProperty =
       NSPredicate(format: "key == 'phoneNumbers'", argumentArray: nil)
     
-    navigationController?.presentViewController(controller,
+    navigationController?.present(controller,
       animated: true, completion: nil)
   }
   
-  func contactPicker(picker: CNContactPickerViewController,
-    didSelectContacts contacts: [CNContact]) {
+  func contactPicker(_ picker: CNContactPickerViewController,
+    didSelect contacts: [CNContact]) {
     print("Selected \(contacts.count) contacts")
   }
   
@@ -122,7 +122,7 @@ class ViewController: UIViewController, CNContactPickerDelegate {
     
     controller.delegate = self
 
-    navigationController?.presentViewController(controller,
+    navigationController?.present(controller,
       animated: true, completion: nil)
   }
 

@@ -21,14 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func example1(){
     
     let toFetch =
-    CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName)
+    CNContactFormatter.descriptorForRequiredKeys(for: .fullName)
     
     store.firstUnifiedContactMatchingName("john", toFetch: [toFetch]){
       guard let contact = $0 else{
         return
       }
       
-      guard let name = CNContactFormatter().stringFromContact(contact) else{
+      guard let name = CNContactFormatter().string(from: contact) else{
         return
       }
       
@@ -40,10 +40,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func example2(){
     
-    let style = CNContactFormatterStyle.PhoneticFullName
+    let style = CNContactFormatterStyle.phoneticFullName
     
     let toFetch =
-    CNContactFormatter.descriptorForRequiredKeysForStyle(style)
+    CNContactFormatter.descriptorForRequiredKeys(for: style)
     
     store.firstUnifiedContactMatchingName("julian", toFetch: [toFetch]){
       
@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       }
       
       guard let name = CNContactFormatter
-        .stringFromContact(contact, style: style) else{
+        .string(from: contact, style: style) else{
         return
       }
       
@@ -66,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let toFetch = [CNContactPostalAddressesKey]
     
-    store.firstUnifiedContactMatchingName("john", toFetch: toFetch){
+    store.firstUnifiedContactMatchingName("john", toFetch: toFetch as [CNKeyDescriptor]){
       guard let contact = $0 else{
         return
       }
@@ -76,13 +76,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return
       }
       
-      guard let address = firstAddress.value as? CNPostalAddress
-        where firstAddress.value is CNPostalAddress else{
-        return
-      }
+      let address = firstAddress.value
       
       let formatter = CNPostalAddressFormatter()
-      let formattedAddress = formatter.stringFromPostalAddress(address)
+      let formattedAddress = formatter.string(from: address)
       
       print("The address is \(formattedAddress)")
       
@@ -90,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
   }
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
     ContactAuthorizer.authorizeContactsWithCompletionHandler{
       if $0{

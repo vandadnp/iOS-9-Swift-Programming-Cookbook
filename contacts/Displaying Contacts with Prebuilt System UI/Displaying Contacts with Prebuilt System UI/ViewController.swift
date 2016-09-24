@@ -25,7 +25,7 @@ class ViewController: UIViewController{
         return
       }
       
-      let controller = CNContactViewController(forContact: contact)
+      let controller = CNContactViewController(for: contact)
       controller.contactStore = self.store
       controller.allowsEditing = false
       

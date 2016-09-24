@@ -27,16 +27,16 @@ extension UIView : Pippable{
     set{pipLayer.player = newValue}
   }
   
-  override public func awakeFromNib() {
+  override open func awakeFromNib() {
     super.awakeFromNib()
-    backgroundColor = .blackColor()
+    backgroundColor = .black
   }
   
 }
 
 class PipView : UIView{
   
-  override class func layerClass() -> AnyClass{
+  override class var layerClass : AnyClass{
     return AVPlayerLayer.self
   }
  

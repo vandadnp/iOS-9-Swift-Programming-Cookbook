@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension CFStringRef{
+extension CFString{
   public func str() -> String{
     return String(self)
   }

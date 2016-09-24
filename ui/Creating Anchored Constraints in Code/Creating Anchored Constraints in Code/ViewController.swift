@@ -16,11 +16,11 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    btn2.leadingAnchor.constraintEqualToAnchor(btn1.trailingAnchor,
-      constant: 10).active = true
+    btn2.leadingAnchor.constraint(equalTo: btn1.trailingAnchor,
+      constant: 10).isActive = true
     
-    v.widthAnchor.constraintEqualToAnchor(btn2.widthAnchor,
-      constant:0).active = true
+    v.widthAnchor.constraint(equalTo: btn2.widthAnchor,
+      constant:0).isActive = true
 
   }
 

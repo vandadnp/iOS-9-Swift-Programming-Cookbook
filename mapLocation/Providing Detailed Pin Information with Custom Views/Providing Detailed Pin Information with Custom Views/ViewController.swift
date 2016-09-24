@@ -23,12 +23,12 @@ class ViewController: UIViewController {
     }()
   
   
-  func mapView(mapView: MKMapView,
+  func mapView(_ mapView: MKMapView,
     viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
       
       let view: MKAnnotationView
       if let v = mapView
-        .dequeueReusableAnnotationViewWithIdentifier(identifier){
+        .dequeueReusableAnnotationView(withIdentifier: identifier){
           //reuse
           view = v
       } else {
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
   }
   
   
-  override func viewDidAppear(animated: Bool) {
+  override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     
     map.removeAnnotations(annotations)

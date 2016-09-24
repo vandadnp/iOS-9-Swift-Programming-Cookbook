@@ -8,19 +8,19 @@
 
 import ClockKit
 
-extension NSDate{
-  func plus10Minutes() -> NSDate{
-    return self.dateByAddingTimeInterval(10 * 60)
+extension Date{
+  func plus10Minutes() -> Date{
+    return self.addingTimeInterval(10 * 60)
   }
 }
 
-extension CollectionType where Generator.Element : Pausable {
+extension Collection where Iterator.Element : Pausable {
   
-  func nextPause() -> Self.Generator.Element?{
-    let now = NSDate()
+  func nextPause() -> Self.Iterator.Element?{
+    let now = Date()
     
     for pause in self{
-      if now.compare(pause.date) == .OrderedAscending{
+      if now.compare(pause.date as Date) == .orderedAscending{
         return pause
       }
     }
@@ -34,7 +34,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
   
   let dataProvider = DataProvider()
   
-  func templateForPause(pause: PauseAtWork) -> CLKComplicationTemplate{
+  func templateForPause(_ pause: PauseAtWork) -> CLKComplicationTemplate{
     
     guard let nextPause = dataProvider.allPausesToday().nextPause() else{
       let template = CLKComplicationTemplateModularLargeStandardBody()
@@ -45,45 +45,45 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     let template = CLKComplicationTemplateModularLargeTallBody()
     template.headerTextProvider = CLKSimpleTextProvider(text: nextPause.name)
-    template.bodyTextProvider = CLKTimeTextProvider(date: nextPause.date)
+    template.bodyTextProvider = CLKTimeTextProvider(date: nextPause.date as Date)
     
     return template
   }
   
-  func timelineEntryForPause(pause: PauseAtWork) ->
+  func timelineEntryForPause(_ pause: PauseAtWork) ->
     CLKComplicationTimelineEntry{
     let template = templateForPause(pause)
-    return CLKComplicationTimelineEntry(date: pause.date,
+    return CLKComplicationTimelineEntry(date: pause.date as Date,
       complicationTemplate: template)
   }
   
-  func getSupportedTimeTravelDirectionsForComplication(
-    complication: CLKComplication,
-    withHandler handler: (CLKComplicationTimeTravelDirections) -> Void) {
-      handler([.Forward, .Backward])
+  func getSupportedTimeTravelDirections(
+    for complication: CLKComplication,
+    withHandler handler: @escaping (CLKComplicationTimeTravelDirections) -> Void) {
+      handler([.forward, .backward])
   }
   
-  func getPrivacyBehaviorForComplication(complication: CLKComplication,
-    withHandler handler: (CLKComplicationPrivacyBehavior) -> Void) {
-      handler(.ShowOnLockScreen)
+  func getPrivacyBehavior(for complication: CLKComplication,
+    withHandler handler: @escaping (CLKComplicationPrivacyBehavior) -> Void) {
+      handler(.showOnLockScreen)
   }
   
-  func getTimelineStartDateForComplication(complication: CLKComplication,
-    withHandler handler: (NSDate?) -> Void) {
-      handler(dataProvider.allPausesToday().first!.date)
+  func getTimelineStartDate(for complication: CLKComplication,
+    withHandler handler: @escaping (Date?) -> Void) {
+      handler(dataProvider.allPausesToday().first!.date as Date)
   }
   
-  func getTimelineEndDateForComplication(complication: CLKComplication,
-    withHandler handler: (NSDate?) -> Void) {
-    handler(dataProvider.allPausesToday().last!.date)
+  func getTimelineEndDate(for complication: CLKComplication,
+    withHandler handler: @escaping (Date?) -> Void) {
+    handler(dataProvider.allPausesToday().last!.date as Date?)
   }
   
-  func getTimelineEntriesForComplication(complication: CLKComplication,
-    beforeDate date: NSDate, limit: Int,
-    withHandler handler: (([CLKComplicationTimelineEntry]?) -> Void)) {
+  func getTimelineEntries(for complication: CLKComplication,
+    before date: Date, limit: Int,
+    withHandler handler: (@escaping ([CLKComplicationTimelineEntry]?) -> Void)) {
       
       let entries = dataProvider.allPausesToday().filter{
-        date.compare($0.date) == .OrderedDescending
+        date.compare($0.date as Date) == .orderedDescending
       }.map{
         self.timelineEntryForPause($0)
       }
@@ -91,12 +91,12 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
       handler(entries)
   }
   
-  func getTimelineEntriesForComplication(complication: CLKComplication,
-    afterDate date: NSDate, limit: Int,
-    withHandler handler: (([CLKComplicationTimelineEntry]?) -> Void)) {
+  func getTimelineEntries(for complication: CLKComplication,
+    after date: Date, limit: Int,
+    withHandler handler: (@escaping ([CLKComplicationTimelineEntry]?) -> Void)) {
     
       let entries = dataProvider.allPausesToday().filter{
-        date.compare($0.date) == .OrderedAscending
+        date.compare($0.date as Date) == .orderedAscending
       }.map{
         self.timelineEntryForPause($0)
       }
@@ -105,8 +105,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
       
   }
   
-  func getCurrentTimelineEntryForComplication(complication: CLKComplication,
-    withHandler handler: ((CLKComplicationTimelineEntry?) -> Void)) {
+  func getCurrentTimelineEntry(for complication: CLKComplication,
+    withHandler handler: (@escaping (CLKComplicationTimelineEntry?) -> Void)) {
       
       if let pause = dataProvider.allPausesToday().nextPause(){
         handler(timelineEntryForPause(pause))
@@ -116,12 +116,12 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
       
   }
   
-  func getNextRequestedUpdateDateWithHandler(handler: (NSDate?) -> Void) {
-    handler(NSDate().plus10Minutes());
+  func getNextRequestedUpdateDate(handler: @escaping (Date?) -> Void) {
+    handler(Date().plus10Minutes());
   }
   
-  func getPlaceholderTemplateForComplication(complication: CLKComplication,
-    withHandler handler: (CLKComplicationTemplate?) -> Void) {
+  func getPlaceholderTemplate(for complication: CLKComplication,
+    withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
       if let pause = dataProvider.allPausesToday().nextPause(){
         handler(templateForPause(pause))
       } else {

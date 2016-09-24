@@ -15,27 +15,27 @@ class InterfaceController: WKInterfaceController {
   @IBOutlet var iosAppReplyLbl: WKInterfaceLabel!
   @IBOutlet var repliesGroup: WKInterfaceGroup!
   
-  func send(int: Int){
+  func send(_ int: Int){
     
-    WCSession.defaultSession().sendMessage(["msg" : int],
+    WCSession.default().sendMessage(["msg" : int],
       replyHandler: nil, errorHandler: nil)
     
   }
   
   @IBAction func sendHello() {
-    send(PredefinedMessage.Hello.hashValue)
+    send(PredefinedMessage.hello.hashValue)
   }
   
   @IBAction func sendThankYou() {
-    send(PredefinedMessage.ThankYou.hashValue)
+    send(PredefinedMessage.thankYou.hashValue)
   }
   
   @IBAction func sendHowAreYou() {
-    send(PredefinedMessage.HowAreYou.hashValue)
+    send(PredefinedMessage.howAreYou.hashValue)
   }
   
   @IBAction func sendIHearYou() {
-    send(PredefinedMessage.IHearYou.hashValue)
+    send(PredefinedMessage.iHearYou.hashValue)
   }
   
   

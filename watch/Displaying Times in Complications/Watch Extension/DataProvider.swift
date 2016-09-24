@@ -10,12 +10,12 @@ import Foundation
 
 protocol Pausable{
   var name: String {get}
-  var date: NSDate {get}
+  var date: Date {get}
 }
 
 struct PauseAtWork : Pausable{
   let name: String
-  let date: NSDate
+  let date: Date
 }
 
 struct DataProvider{
@@ -24,26 +24,26 @@ struct DataProvider{
     
     var all = [PauseAtWork]()
     
-    let now = NSDate()
-    let cal = NSCalendar.currentCalendar()
-    let units = NSCalendarUnit.Year.union(.Month).union(.Day)
-    let comps = cal.components(units, fromDate: now)
-    comps.calendar = cal
+    let now = Date()
+    let cal = Calendar.current
+    let units = NSCalendar.Unit.year.union(.month).union(.day)
+    var comps = (cal as NSCalendar).components(units, from: now)
+    (comps as NSDateComponents).calendar = cal
     comps.minute = 30
     
     comps.hour = 11
-    all.append(PauseAtWork(name: "Coffee", date: comps.date!))
+    all.append(PauseAtWork(name: "Coffee", date: (comps as NSDateComponents).date!))
     
     comps.minute = 30
     comps.hour = 14
-    all.append(PauseAtWork(name: "Lunch", date: comps.date!))
+    all.append(PauseAtWork(name: "Lunch", date: (comps as NSDateComponents).date!))
     
     comps.minute = 0
     comps.hour = 16
-    all.append(PauseAtWork(name: "Tea", date: comps.date!))
+    all.append(PauseAtWork(name: "Tea", date: (comps as NSDateComponents).date!))
     
     comps.hour = 17
-    all.append(PauseAtWork(name: "Dinner", date: comps.date!))
+    all.append(PauseAtWork(name: "Dinner", date: (comps as NSDateComponents).date!))
     
     return all
     

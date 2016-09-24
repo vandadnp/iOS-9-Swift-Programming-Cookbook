@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     view.accessibilityValue = "untapped"
     view.accessibilityLabel = "myView"
     
-    let tgr = UITapGestureRecognizer(target: self, action: "handleTap")
+    let tgr = UITapGestureRecognizer(target: self, action: #selector(ViewController.handleTap))
     tgr.numberOfTapsRequired = 1
     tgr.numberOfTouchesRequired = 2
     view.addGestureRecognizer(tgr)

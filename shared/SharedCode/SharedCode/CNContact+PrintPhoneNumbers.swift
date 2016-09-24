@@ -16,8 +16,8 @@ public extension CNContact{
       return
     }
     
-    for label in self.phoneNumbers where label.value is CNPhoneNumber{
-      let num = label.value as! CNPhoneNumber
+    for label in self.phoneNumbers{
+      let num = label.value 
       print(num.stringValue)
     }
   }

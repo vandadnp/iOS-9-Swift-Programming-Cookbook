@@ -9,32 +9,32 @@
 import WatchKit
 import Foundation
 
-class InterfaceController: WKInterfaceController, NSURLSessionDelegate,
-NSURLSessionDownloadDelegate {
+class InterfaceController: WKInterfaceController, URLSessionDelegate,
+URLSessionDownloadDelegate {
   
   @IBOutlet var statusLbl: WKInterfaceLabel!
   
   var status: String = ""{
     didSet{
-      dispatch_async(dispatch_get_main_queue()){[unowned self] in
+      DispatchQueue.main.async{[unowned self] in
         self.statusLbl.setText(self.status)
       }
     }
   }
   
-  func URLSession(session: NSURLSession,
-    downloadTask: NSURLSessionDownloadTask,
-    didFinishDownloadingToURL location: NSURL) {
+  func urlSession(_ session: URLSession,
+    downloadTask: URLSessionDownloadTask,
+    didFinishDownloadingTo location: URL) {
       
-      let fm = NSFileManager()
-      let url = try! fm.URLForDirectory(.DownloadsDirectory,
-        inDomain: .UserDomainMask,
-        appropriateForURL: location, create: true)
-        .URLByAppendingPathComponent("file.txt")
+      let fm = FileManager()
+      let url = try! fm.url(for: .downloadsDirectory,
+        in: .userDomainMask,
+        appropriateFor: location, create: true)
+        .appendingPathComponent("file.txt")
       
       do{
-        try fm.removeItemAtURL(url)
-        try fm.moveItemAtURL(location, toURL: url)
+        try fm.removeItem(at: url)
+        try fm.moveItem(at: location, to: url)
         self.status = "Download finished"
       } catch let err{
         self.status = "Error = \(err)"
@@ -44,20 +44,20 @@ NSURLSessionDownloadDelegate {
       
   }
   
-  func URLSession(session: NSURLSession,
-    downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64,
+  func urlSession(_ session: URLSession,
+    downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64,
     totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
     status = "Downloaded \(bytesWritten) bytes"
   }
   
-  func URLSession(session: NSURLSession,
-    downloadTask: NSURLSessionDownloadTask,
+  func urlSession(_ session: URLSession,
+    downloadTask: URLSessionDownloadTask,
     didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
     status = "Resuming the download"
   }
   
-  func URLSession(session: NSURLSession, task: NSURLSessionTask,
-    didCompleteWithError error: NSError?) {
+  func urlSession(_ session: URLSession, task: URLSessionTask,
+    didCompleteWithError error: Error?) {
       if let e = error{
         status = "Completed with error = \(e)"
       } else {
@@ -65,8 +65,8 @@ NSURLSessionDownloadDelegate {
       }
   }
   
-  func URLSession(session: NSURLSession,
-    didBecomeInvalidWithError error: NSError?) {
+  func urlSession(_ session: URLSession,
+    didBecomeInvalidWithError error: Error?) {
       if let e = error{
         status = "Invalidated \(e)"
       } else {
@@ -76,18 +76,18 @@ NSURLSessionDownloadDelegate {
   
   @IBAction func download() {
     
-    let url = NSURL(string: "http://localhost:8888/file.txt")!
+    let url = URL(string: "http://localhost:8888/file.txt")!
     
     let id = "se.pixolity.app.backgroundtask"
-    let conf = NSURLSessionConfiguration
-      .backgroundSessionConfigurationWithIdentifier(id)
+    let conf = URLSessionConfiguration
+      .background(withIdentifier: id)
     
-    let session = NSURLSession(configuration: conf, delegate: self,
-      delegateQueue: NSOperationQueue())
+    let session = Foundation.URLSession(configuration: conf, delegate: self,
+      delegateQueue: OperationQueue())
     
-    let request = NSURLRequest(URL: url)
+    let request = URLRequest(url: url)
     
-    session.downloadTaskWithRequest(request).resume()
+    session.downloadTask(with: request).resume()
     
   }
   

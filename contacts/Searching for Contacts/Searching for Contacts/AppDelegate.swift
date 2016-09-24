@@ -19,15 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   //finds anybody named john
   func example1(){
     
-    NSOperationQueue().addOperationWithBlock{[unowned store] in
+    OperationQueue().addOperation{[unowned store] in
       
-      let predicate = CNContact.predicateForContactsMatchingName("john")
+      let predicate = CNContact.predicateForContacts(matchingName: "john")
       
       let toFetch = [CNContactGivenNameKey, CNContactFamilyNameKey]
       
       do{
-        let contacts = try store.unifiedContactsMatchingPredicate(
-          predicate, keysToFetch: toFetch)
+        let contacts = try store.unifiedContacts(
+          matching: predicate, keysToFetch: toFetch as [CNKeyDescriptor])
         
         for contact in contacts{
           print(contact.givenName)
@@ -46,13 +46,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   //another way of finding anybody named john with CNContactFetchRequest
   func example2(){
     
-    NSOperationQueue().addOperationWithBlock{[unowned store] in
+    OperationQueue().addOperation{[unowned store] in
       let toFetch = [CNContactGivenNameKey, CNContactFamilyNameKey]
-      let request = CNContactFetchRequest(keysToFetch: toFetch)
-      request.predicate = CNContact.predicateForContactsMatchingName("john")
+      let request = CNContactFetchRequest(keysToFetch: toFetch as [CNKeyDescriptor])
+      request.predicate = CNContact.predicateForContacts(matchingName: "john")
       
       do{
-        try store.enumerateContactsWithFetchRequest(request) {
+        try store.enumerateContacts(with: request) {
           contact, stop in
           print(contact.givenName)
           print(contact.familyName)
@@ -70,12 +70,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   //their profile picture
   func example3(){
     
-    NSOperationQueue().addOperationWithBlock{[unowned store] in
+    OperationQueue().addOperation{[unowned store] in
       var toFetch = [CNContactImageDataAvailableKey]
-      let predicate = CNContact.predicateForContactsMatchingName("foo")
+      let predicate = CNContact.predicateForContacts(matchingName: "foo")
       do{
-        let contacts = try store.unifiedContactsMatchingPredicate(predicate,
-          keysToFetch: toFetch)
+        let contacts = try store.unifiedContacts(matching: predicate,
+          keysToFetch: toFetch as [CNKeyDescriptor])
         
         for contact in contacts{
           guard contact.imageDataAvailable else{
@@ -91,8 +91,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           else {
             toFetch += [CNContactImageDataKey, CNContactGivenNameKey]
             do{
-              let contact = try store.unifiedContactWithIdentifier(
-                contact.identifier, keysToFetch: toFetch)
+              let contact = try store.unifiedContact(
+                withIdentifier: contact.identifier, keysToFetch: toFetch as [CNKeyDescriptor])
               print(contact.givenName)
               print(UIImage(data: contact.imageData!))
               print(contact.identifier)
@@ -112,14 +112,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   //fetch a contact with the given identifier
   func example4(){
     
-    NSOperationQueue().addOperationWithBlock{[unowned store] in
+    OperationQueue().addOperation{[unowned store] in
       let id = "AECF6A0E-6BCB-4A46-834F-1D8374E6FE0A:ABPerson"
       let toFetch = [CNContactGivenNameKey, CNContactFamilyNameKey]
       
       do{
         
-        let contact = try store.unifiedContactWithIdentifier(id,
-          keysToFetch: toFetch)
+        let contact = try store.unifiedContact(withIdentifier: id,
+          keysToFetch: toFetch as [CNKeyDescriptor])
         
         print(contact.givenName)
         print(contact.familyName)
@@ -132,7 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
   }
   
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
     ContactAuthorizer.authorizeContactsWithCompletionHandler{succeeded in
       

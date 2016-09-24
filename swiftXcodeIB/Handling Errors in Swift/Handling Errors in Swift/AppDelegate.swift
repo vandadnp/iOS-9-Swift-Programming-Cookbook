@@ -13,20 +13,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
   
-  enum Errors : ErrorType{
-    case EmptyFirstName
-    case EmptyLastName
+  enum Errors : Error{
+    case emptyFirstName
+    case emptyLastName
   }
   
-  func fullNameFromFirstName(firstName: String,
+  func fullNameFromFirstName(_ firstName: String,
     lastName: String) throws -> String{
     
     if firstName.characters.count == 0{
-      throw Errors.EmptyFirstName
+      throw Errors.emptyFirstName
     }
     
     if lastName.characters.count == 0{
-      throw Errors.EmptyLastName
+      throw Errors.emptyLastName
     }
     
     return firstName + " " + lastName
@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
   }
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
     example1()
     example2()

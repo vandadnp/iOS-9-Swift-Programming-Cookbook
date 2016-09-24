@@ -11,51 +11,51 @@ import AVFoundation
 
 class ViewController: UIViewController, AVAssetDownloadDelegate {
   
-  let url = NSURL(string: "http://localhost:8888/video.mp4")!
+  let url = URL(string: "http://localhost:8888/video.mp4")!
   let sessionId = "com.mycompany.background"
-  let queue = NSOperationQueue()
+  let queue = OperationQueue()
   var task: AVAssetDownloadTask?
   var session: AVAssetDownloadURLSession?
   
-  func URLSession(session: NSURLSession, task: NSURLSessionTask,
-    didCompleteWithError error: NSError?) {
+  func urlSession(_ session: URLSession, task: URLSessionTask,
+    didCompleteWithError error: Error?) {
     //code this
   }
   
-  func URLSession(session: NSURLSession,
+  func urlSession(_ session: URLSession,
     assetDownloadTask: AVAssetDownloadTask,
-    didLoadTimeRange timeRange: CMTimeRange,
+    didLoad timeRange: CMTimeRange,
     totalTimeRangesLoaded loadedTimeRanges: [NSValue],
     timeRangeExpectedToLoad: CMTimeRange) {
     //code this
   }
   
-  func URLSession(session: NSURLSession,
+  func urlSession(_ session: URLSession,
     assetDownloadTask: AVAssetDownloadTask,
-    didResolveMediaSelection resolvedMediaSelection: AVMediaSelection) {
+    didResolve resolvedMediaSelection: AVMediaSelection) {
     
   }
 
   @IBAction func download() {
     
     let options = [AVURLAssetReferenceRestrictionsKey :
-      AVAssetReferenceRestrictions.ForbidCrossSiteReference.rawValue]
+      AVAssetReferenceRestrictions.forbidCrossSiteReference.rawValue]
     
-    let asset = AVURLAsset(URL: url, options: options)
+    let asset = AVURLAsset(url: url, options: options)
     
-    let config = NSURLSessionConfiguration
-      .backgroundSessionConfigurationWithIdentifier(sessionId)
+    let config = URLSessionConfiguration
+      .background(withIdentifier: sessionId)
     
     let session = AVAssetDownloadURLSession(configuration: config,
       assetDownloadDelegate: self, delegateQueue: queue)
     self.session = session
     
-    let fm = NSFileManager()
-    let destinationUrl = try! fm.URLForDirectory(.CachesDirectory,
-      inDomain: .UserDomainMask, appropriateForURL: url, create: true)
-      .URLByAppendingPathComponent("file.mp4")
+    let fm = FileManager()
+    let destinationUrl = try! fm.url(for: .cachesDirectory,
+      in: .userDomainMask, appropriateFor: url, create: true)
+      .appendingPathComponent("file.mp4")
     
-    guard let task = session.assetDownloadTaskWithURLAsset(asset,
+    guard let task = session.makeAssetDownloadTask(asset: asset,
       destinationURL: destinationUrl, options: nil) else {
       print("Could not create the task")
       return

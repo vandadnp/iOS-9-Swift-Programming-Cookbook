@@ -24,26 +24,26 @@ class ViewController: UIViewController, MKMapViewDelegate {
       subtitle: "Stockholm, Sweden")]
     }()
   
-  func mapView(mapView: MKMapView,
-    viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+  func mapView(_ mapView: MKMapView,
+    viewFor annotation: MKAnnotation) -> MKAnnotationView? {
       
       let view: MKPinAnnotationView
-      if let v = mapView.dequeueReusableAnnotationViewWithIdentifier(
-        identifier) where v is MKPinAnnotationView{
+      if let v = mapView.dequeueReusableAnnotationView(
+        withIdentifier: identifier) , v is MKPinAnnotationView{
           view = v as! MKPinAnnotationView
       } else {
         view = MKPinAnnotationView(annotation: annotation,
           reuseIdentifier: identifier)
       }
       
-      view.pinTintColor = UIColor.blueColor()
+      view.pinTintColor = UIColor.blue
       
       return view
       
   }
   
   
-  override func viewDidAppear(animated: Bool) {
+  override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     
     map.removeAnnotations(annotations)

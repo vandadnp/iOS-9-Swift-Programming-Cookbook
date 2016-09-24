@@ -11,9 +11,9 @@ import UIKit
 class ViewController: UIViewController {
   
   var mustDownloadVideo = true
-  let processInfo = NSProcessInfo.processInfo()
+  let processInfo = ProcessInfo.processInfo
   
-  func powerModeChanged(notif: NSNotification){
+  func powerModeChanged(_ notif: Notification){
     
     guard mustDownloadVideo else{
       return
@@ -25,8 +25,8 @@ class ViewController: UIViewController {
   
   func downloadNow(){
     
-    guard let url = NSURL(string: "http://localhost:8888/video.mp4") where
-      !processInfo.lowPowerModeEnabled else{
+    guard let url = URL(string: "http://localhost:8888/video.mp4") ,
+      !processInfo.isLowPowerModeEnabled else{
       return
     }
     
@@ -40,9 +40,9 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: "powerModeChanged:",
-      name: NSProcessInfoPowerStateDidChangeNotification, object: nil)
+    NotificationCenter.default.addObserver(self,
+      selector: #selector(ViewController.powerModeChanged(_:)),
+      name: NSNotification.Name.NSProcessInfoPowerStateDidChange, object: nil)
     
     downloadNow()
     

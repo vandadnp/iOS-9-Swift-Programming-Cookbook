@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let enterInfo = UIMutableUserNotificationAction()
     enterInfo.identifier = "enter"
     enterInfo.title = "Enter your name"
-    enterInfo.behavior = .TextInput //this is the key to this example
-    enterInfo.activationMode = .Foreground
+    enterInfo.behavior = .textInput //this is the key to this example
+    enterInfo.activationMode = .foreground
     
     let cancel = UIMutableUserNotificationAction()
     cancel.identifier = "cancel"
@@ -27,19 +27,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let category = UIMutableUserNotificationCategory()
     category.identifier = "texted"
-    category.setActions([enterInfo, cancel], forContext: .Default)
+    category.setActions([enterInfo, cancel], for: .default)
     
     let settings = UIUserNotificationSettings(
-      forTypes: .Alert, categories: [category])
+      types: .alert, categories: [category])
     
-    UIApplication.sharedApplication()
+    UIApplication.shared
       .registerUserNotificationSettings(settings)
     
   }
   
-  func application(application: UIApplication,
+  func application(_ application: UIApplication,
     didFinishLaunchingWithOptions
-    launchOptions: [NSObject : AnyObject]?) -> Bool {
+    launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
       
       registerForNotifications()
       
@@ -49,28 +49,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func scheduleNotification(){
     
     let n = UILocalNotification()
-    let c = NSCalendar.autoupdatingCurrentCalendar()
-    let comp = c.componentsInTimeZone(c.timeZone, fromDate: NSDate())
-    comp.second += 3
-    let date = c.dateFromComponents(comp)
+    let c = Calendar.autoupdatingCurrent
+    var comp = c.dateComponents(in: c.timeZone, from: Date())
+    
+    if let second = comp.second{
+      comp.second = second + 1
+    }
+    
+    let date = c.date(from: comp)
     n.fireDate = date
     
     n.alertBody = "Please enter your name now"
     n.alertAction = "Enter"
     n.category = "texted"
-    UIApplication.sharedApplication().scheduleLocalNotification(n)
+    UIApplication.shared.scheduleLocalNotification(n)
     
   }
   
-  func applicationDidEnterBackground(application: UIApplication) {
+  func applicationDidEnterBackground(_ application: UIApplication) {
     scheduleNotification()
   }
   
-  func application(application: UIApplication,
+  func application(_ application: UIApplication,
     handleActionWithIdentifier identifier: String?,
-    forLocalNotification notification: UILocalNotification,
-    withResponseInfo responseInfo: [NSObject : AnyObject],
-    completionHandler: () -> Void) {
+    for notification: UILocalNotification,
+    withResponseInfo responseInfo: [AnyHashable: Any],
+    completionHandler: @escaping () -> Void) {
       
       if let text = responseInfo[UIUserNotificationActionResponseTypedTextKey]
         as? String{

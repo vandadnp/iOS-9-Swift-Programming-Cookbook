@@ -16,16 +16,16 @@ NSUserActivityDelegate {
   @IBOutlet var textField: UITextField!
   @IBOutlet var status: UITextView!
   
-  func userActivityWasContinued(userActivity: NSUserActivity) {
+  func userActivityWasContinued(_ userActivity: NSUserActivity) {
     log("Activity was continued")
   }
   
-  func userActivityWillSave(userActivity: NSUserActivity) {
+  func userActivityWillSave(_ userActivity: NSUserActivity) {
     log("Activity will save")
   }
   
-  func log(t: String){
-    dispatch_async(dispatch_get_main_queue()) {
+  func log(_ t: String){
+    DispatchQueue.main.async {
       self.status.text = t + "\n" + self.status.text
     }
   }
@@ -45,8 +45,8 @@ NSUserActivityDelegate {
   lazy var activity: NSUserActivity = {
     let a = NSUserActivity(activityType: self.activityType)
     a.title = "Text Editing"
-    a.eligibleForHandoff = true
-    a.eligibleForSearch = true
+    a.isEligibleForHandoff = true
+    a.isEligibleForSearch = true
     //do this only if it makes sense
     //a.eligibleForPublicIndexing = true
     a.delegate = self
@@ -58,29 +58,29 @@ NSUserActivityDelegate {
     att.contentDescription = "Editing text right in the app"
     att.keywords = Array(a.keywords)
     
-    if let u = NSBundle.mainBundle().URLForResource("Icon",
+    if let u = Bundle.main.url(forResource: "Icon",
       withExtension: "png"){
-        att.thumbnailData = NSData(contentsOfURL: u)
+        att.thumbnailData = try? Data(contentsOf: u)
     }
     a.contentAttributeSet = att
     
     return a
   }()
   
-  func textFieldDidBeginEditing(textField: UITextField) {
+  func textFieldDidBeginEditing(_ textField: UITextField) {
     log("Activity is current")
     userActivity = activity
     activity.becomeCurrent()
   }
   
-  func textFieldDidEndEditing(textField: UITextField) {
+  func textFieldDidEndEditing(_ textField: UITextField) {
     log("Activity resigns being current")
     activity.resignCurrent()
     userActivity = nil
   }
   
-  func textField(textField: UITextField,
-    shouldChangeCharactersInRange range: NSRange,
+  func textField(_ textField: UITextField,
+    shouldChangeCharactersIn range: NSRange,
     replacementString string: String) -> Bool {
       
       activity.needsSave = true
@@ -89,12 +89,12 @@ NSUserActivityDelegate {
     
   }
   
-  override func updateUserActivityState(a: NSUserActivity) {
+  override func updateUserActivityState(_ a: NSUserActivity) {
     
     log("We are asked to update the activity state")
     
-    a.addUserInfoEntriesFromDictionary(
-      [self.activityTxtKey : self.textFieldText()])
+    a.addUserInfoEntries(
+      from: [self.activityTxtKey : self.textFieldText()])
     
     super.updateUserActivityState(a)
     

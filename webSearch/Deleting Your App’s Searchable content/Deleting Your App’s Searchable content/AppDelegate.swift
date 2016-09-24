@@ -22,31 +22,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       "com.yourcompany.etc3"
     ]
     
-    let i = CSSearchableIndex(name: NSBundle.mainBundle().bundleIdentifier!)
+    let i = CSSearchableIndex(name: Bundle.main.bundleIdentifier!)
     
-    i.fetchLastClientStateWithCompletionHandler {clientState, err in
+    i.fetchLastClientState {clientState, err in
       guard err == nil else{
         print("Could not fetch last client state")
         return
       }
       
-      let state: NSData
+      let state: Data
       if let s = clientState{
         state = s
       } else {
-        state = NSData()
+        state = Data()
       }
       
-      i.beginIndexBatch()
+      i.beginBatch()
       
-      i.deleteSearchableItemsWithIdentifiers(identifiers) {err in
+      i.deleteSearchableItems(withIdentifiers: identifiers) {err in
         if let e = err{
           print("Error happened \(e)")
         } else {
           print("Successfully deleted the given identifiers")
         }
       }
-      i.endIndexBatchWithClientState(state, completionHandler: {err in
+      i.endBatch(withClientState: state, completionHandler: {err in
         guard err == nil else{
           print("Error happened in ending batch updates = \(err!)")
           return
@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
   }
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     example1()
     return true
   }

@@ -13,7 +13,7 @@ protocol Indexable{
   var id: String {get set}
   var title: String {get set}
   var description: String {get set}
-  var url: NSURL? {get set}
+  var url: URL? {get set}
   var thumbnail: UIImage? {get set}
 }
 
@@ -22,14 +22,14 @@ struct Indexed : Indexable{
   var id: String
   var title: String
   var description: String
-  var url: NSURL?
+  var url: URL?
   var thumbnail: UIImage?
 }
 
-extension SequenceType where Generator.Element : Indexable{
+extension Sequence where Iterator.Element : Indexable{
   func allIds() -> [String]{
     var ids = [String]()
-    for (_, v) in self.enumerate(){
+    for (_, v) in self.enumerated(){
       ids.append(v.id)
     }
     return ids
@@ -49,9 +49,9 @@ class IndexRequestHandler: CSIndexExtensionRequestHandler {
     
   }()
   
-  override func searchableIndex(searchableIndex: CSSearchableIndex,
+  override func searchableIndex(_ searchableIndex: CSSearchableIndex,
     reindexAllSearchableItemsWithAcknowledgementHandler
-    acknowledgementHandler: () -> Void) {
+    acknowledgementHandler: @escaping () -> Void) {
       
       for _ in indexedItems{
         //TODO: you can index the item here.
@@ -61,9 +61,9 @@ class IndexRequestHandler: CSIndexExtensionRequestHandler {
       acknowledgementHandler()
   }
   
-  override func searchableIndex(searchableIndex: CSSearchableIndex,
+  override func searchableIndex(_ searchableIndex: CSSearchableIndex,
     reindexSearchableItemsWithIdentifiers identifiers: [String],
-    acknowledgementHandler: () -> Void) {
+    acknowledgementHandler: @escaping () -> Void) {
       
       //get all the identifiers strings that we have
       let ourIds = indexedItems.allIds()
@@ -71,11 +71,11 @@ class IndexRequestHandler: CSIndexExtensionRequestHandler {
       //go through the items that we have and look for the given id
       var n = 0
       for i in identifiers{
-        if let index = ourIds.indexOf(i){
+        if let index = ourIds.index(of: i){
           let _ = indexedItems[index]
           //TODO: reindex this item.
         }
-        n++
+        n += 1
       }
       
       acknowledgementHandler()

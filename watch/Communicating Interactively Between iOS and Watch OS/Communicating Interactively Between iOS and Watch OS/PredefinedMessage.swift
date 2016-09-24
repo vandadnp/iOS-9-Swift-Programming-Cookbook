@@ -9,8 +9,8 @@
 import Foundation
 
 enum PredefinedMessage : Int{
-  case Hello
-  case ThankYou
-  case HowAreYou
-  case IHearYou
+  case hello
+  case thankYou
+  case howAreYou
+  case iHearYou
 }

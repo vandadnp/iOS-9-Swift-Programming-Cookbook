@@ -10,7 +10,7 @@ import UIKit
 import SharedCode
 
 extension StrideThrough{
-  func forEach(f: (Generator.Element) -> Void){
+  func forEach(_ f: (Iterator.Element) -> Void){
     for item in self{
       f(item)
     }
@@ -19,15 +19,15 @@ extension StrideThrough{
 
 class PentagonView : UIView{
   
-  private var diameter: CGFloat = 0.0
+  fileprivate var diameter: CGFloat = 0.0
   
-  class func pentagonViewWithDiameter(diameter: CGFloat) -> PentagonView{
+  class func pentagonViewWithDiameter(_ diameter: CGFloat) -> PentagonView{
     return PentagonView(diameter: diameter)
   }
   
   init(diameter: CGFloat){
     self.diameter = diameter
-    super.init(frame: CGRectMake(0, 0, diameter, diameter))
+    super.init(frame: CGRect(x: 0, y: 0, width: diameter, height: diameter))
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -38,7 +38,7 @@ class PentagonView : UIView{
     return diameter / 2.0
   }
   
-  func pointFromAngle(angle: Double) -> CGPoint{
+  func pointFromAngle(_ angle: Double) -> CGPoint{
     
     let x = radius + (radius * cos(CGFloat(angle)))
     let y = radius + (radius * sin(CGFloat(angle)))
@@ -48,44 +48,44 @@ class PentagonView : UIView{
   
   lazy var path: UIBezierPath = {
     let path = UIBezierPath()
-    path.moveToPoint(self.pointFromAngle(0))
+    path.move(to: self.pointFromAngle(0))
     
     let oneSlice = (M_PI * 2.0) / 5.0
     let lessOneSlice = (M_PI * 2.0) - oneSlice
     
-    oneSlice.stride(through: lessOneSlice, by: oneSlice).forEach{
-      path.addLineToPoint(self.pointFromAngle($0))
+    stride(from: oneSlice, through: lessOneSlice, by: oneSlice).forEach{
+      path.addLine(to: self.pointFromAngle($0))
     }
     
-    path.closePath()
+    path.close()
     return path
     }()
   
-  override func drawRect(rect: CGRect) {
+  override func draw(_ rect: CGRect) {
     guard let context = UIGraphicsGetCurrentContext() else{
       return
     }
-    UIColor.clearColor().setFill()
-    CGContextFillRect(context, rect)
-    UIColor.yellowColor().setFill()
+    UIColor.clear.setFill()
+    context.fill(rect)
+    UIColor.yellow.setFill()
     path.fill()
   }
   
   override var collisionBoundsType: UIDynamicItemCollisionBoundsType{
-    return UIDynamicItemCollisionBoundsType.Path
+    return UIDynamicItemCollisionBoundsType.path
   }
   
   override var collisionBoundingPath: UIBezierPath{
     let path = self.path.copy() as! UIBezierPath
-    path.applyTransform(CGAffineTransformMakeTranslation(-radius, -radius))
+    path.apply(CGAffineTransform(translationX: -radius, y: -radius))
     return path
   }
   
 }
 
 extension UIView{
-  func createPanGestureRecognizerOn(obj: AnyObject){
-    let pgr = UIPanGestureRecognizer(target: obj, action: "panning:")
+  func createPanGestureRecognizerOn(_ obj: AnyObject){
+    let pgr = UIPanGestureRecognizer(target: obj, action: #selector(ViewController.panning(_:)))
     addGestureRecognizer(pgr)
   }
 }
@@ -94,7 +94,7 @@ class ViewController: UIViewController {
   
   lazy var animator: UIDynamicAnimator = {
     let animator = UIDynamicAnimator(referenceView: self.view)
-    animator.debugEnabled = true
+    animator.isDebugEnabled = true
     return animator
     }()
   
@@ -105,7 +105,7 @@ class ViewController: UIViewController {
     }()
   
   lazy var noise: UIFieldBehavior = {
-    let noise = UIFieldBehavior.noiseFieldWithSmoothness(0.9,
+    let noise = UIFieldBehavior.noiseField(smoothness: 0.9,
       animationSpeed: 1)
     noise.addItems(self.views)
     return noise
@@ -118,14 +118,14 @@ class ViewController: UIViewController {
   lazy var squareView: UIView = {
     let view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
     view.createPanGestureRecognizerOn(self)
-    view.backgroundColor = UIColor.brownColor()
+    view.backgroundColor = UIColor.brown
     return view
     }()
   
   lazy var pentagonView: PentagonView = {
     let view = PentagonView.pentagonViewWithDiameter(100)
     view.createPanGestureRecognizerOn(self)
-    view.backgroundColor = UIColor.clearColor()
+    view.backgroundColor = UIColor.clear
     view.center = self.view.center
     return view
     }()
@@ -141,15 +141,15 @@ class ViewController: UIViewController {
     animator.addBehaviors(behaviors)
   }
   
-  @IBAction func panning(sender: UIPanGestureRecognizer) {
+  @IBAction func panning(_ sender: UIPanGestureRecognizer) {
     
     switch sender.state{
-    case .Began:
+    case .began:
       collision.removeItems()
       noise.removeItems()
-    case .Changed:
-      sender.view?.center = sender.locationInView(view)
-    case .Ended, .Cancelled:
+    case .changed:
+      sender.view?.center = sender.location(in: view)
+    case .ended, .cancelled:
       collision.addItems(views)
       noise.addItems(views)
     default: ()

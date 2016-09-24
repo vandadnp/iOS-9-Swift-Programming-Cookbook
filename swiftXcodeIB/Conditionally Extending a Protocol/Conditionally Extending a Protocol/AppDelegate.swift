@@ -8,10 +8,10 @@
 
 import UIKit
 
-extension SequenceType where
-  Generator.Element : IntegerArithmeticType{
-  public func canFind(value: Generator.Element) -> Bool{
-    for (_, v) in self.enumerate(){
+extension Sequence where
+  Iterator.Element : IntegerArithmetic{
+  public func canFind(_ value: Iterator.Element) -> Bool{
+    for (_, v) in self.enumerated(){
       if v == value{
         return true
       }
@@ -20,19 +20,19 @@ extension SequenceType where
   }
 }
 
-extension SequenceType where Generator.Element : FloatingPointType{
+extension Sequence where Iterator.Element : FloatingPoint{
   //write your code here
   func doSomething(){
     //TODO: code this
   }
 }
 
-extension SequenceType where Generator.Element : StringLiteralConvertible{
+extension Sequence where Iterator.Element : ExpressibleByStringLiteral{
   func longestString() -> String{
     var s = ""
-    for (_, v) in self.enumerate(){
+    for (_, v) in self.enumerated(){
       if let temp = v as? String
-        where temp.characters.count > s.characters.count{
+        , temp.characters.count > s.characters.count{
           s = temp
       }
     }
@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
   }
   
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
     
     example1()

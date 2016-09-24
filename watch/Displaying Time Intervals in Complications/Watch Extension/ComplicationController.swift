@@ -8,19 +8,19 @@
 
 import ClockKit
 
-extension NSDate{
-  func plus10Minutes() -> NSDate{
-    return self.dateByAddingTimeInterval(10 * 60)
+extension Date{
+  func plus10Minutes() -> Date{
+    return self.addingTimeInterval(10 * 60)
   }
 }
 
-extension CollectionType where Generator.Element : Timable {
+extension Collection where Iterator.Element : Timable {
   
-  func nextMeeting() -> Self.Generator.Element?{
-    let now = NSDate()
+  func nextMeeting() -> Self.Iterator.Element?{
+    let now = Date()
     
     for meeting in self{
-      if now.compare(meeting.startDate) == .OrderedAscending{
+      if now.compare(meeting.startDate as Date) == .orderedAscending{
         return meeting
       }
     }
@@ -35,7 +35,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
   
   let dataProvider = DataProvider()
   
-  func templateForMeeting(meeting: Meeting) -> CLKComplicationTemplate{
+  func templateForMeeting(_ meeting: Meeting) -> CLKComplicationTemplate{
     
     let template = CLKComplicationTemplateModularLargeStandardBody()
     
@@ -46,8 +46,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     }
     
     template.headerTextProvider =
-      CLKTimeIntervalTextProvider(startDate: nextMeeting.startDate,
-        endDate: nextMeeting.endDate)
+      CLKTimeIntervalTextProvider(start: nextMeeting.startDate as Date,
+        end: nextMeeting.endDate as Date)
       
     template.body1TextProvider =
       CLKSimpleTextProvider(text: nextMeeting.name,
@@ -60,41 +60,41 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     return template
   }
   
-  func timelineEntryForMeeting(meeting: Meeting) -> CLKComplicationTimelineEntry{
+  func timelineEntryForMeeting(_ meeting: Meeting) -> CLKComplicationTimelineEntry{
     let template = templateForMeeting(meeting)
     
     let date = meeting.previous?.endDate ?? meeting.startDate
-    return CLKComplicationTimelineEntry(date: date,
+    return CLKComplicationTimelineEntry(date: date as Date,
       complicationTemplate: template)
   }
   
-  func getSupportedTimeTravelDirectionsForComplication(
-    complication: CLKComplication,
-    withHandler handler: (CLKComplicationTimeTravelDirections) -> Void) {
-      handler([.Forward, .Backward])
+  func getSupportedTimeTravelDirections(
+    for complication: CLKComplication,
+    withHandler handler: @escaping (CLKComplicationTimeTravelDirections) -> Void) {
+      handler([.forward, .backward])
   }
   
-  func getPrivacyBehaviorForComplication(complication: CLKComplication,
-    withHandler handler: (CLKComplicationPrivacyBehavior) -> Void) {
-      handler(.ShowOnLockScreen)
+  func getPrivacyBehavior(for complication: CLKComplication,
+    withHandler handler: @escaping (CLKComplicationPrivacyBehavior) -> Void) {
+      handler(.showOnLockScreen)
   }
   
-  func getTimelineStartDateForComplication(complication: CLKComplication,
-    withHandler handler: (NSDate?) -> Void) {
-      handler(dataProvider.allMeetingsToday().first!.startDate)
+  func getTimelineStartDate(for complication: CLKComplication,
+    withHandler handler: @escaping (Date?) -> Void) {
+      handler(dataProvider.allMeetingsToday().first!.startDate as Date)
   }
   
-  func getTimelineEndDateForComplication(complication: CLKComplication,
-    withHandler handler: (NSDate?) -> Void) {
-    handler(dataProvider.allMeetingsToday().last!.endDate)
+  func getTimelineEndDate(for complication: CLKComplication,
+    withHandler handler: @escaping (Date?) -> Void) {
+    handler(dataProvider.allMeetingsToday().last!.endDate as Date?)
   }
   
-  func getTimelineEntriesForComplication(complication: CLKComplication,
-    beforeDate date: NSDate, limit: Int,
-    withHandler handler: (([CLKComplicationTimelineEntry]?) -> Void)) {
+  func getTimelineEntries(for complication: CLKComplication,
+    before date: Date, limit: Int,
+    withHandler handler: (@escaping ([CLKComplicationTimelineEntry]?) -> Void)) {
       
       let entries = dataProvider.allMeetingsToday().filter{
-        date.compare($0.startDate) == .OrderedDescending
+        date.compare($0.startDate as Date) == .orderedDescending
       }.map{
         self.timelineEntryForMeeting($0)
       }
@@ -102,12 +102,12 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
       handler(entries)
   }
   
-  func getTimelineEntriesForComplication(complication: CLKComplication,
-    afterDate date: NSDate, limit: Int,
-    withHandler handler: (([CLKComplicationTimelineEntry]?) -> Void)) {
+  func getTimelineEntries(for complication: CLKComplication,
+    after date: Date, limit: Int,
+    withHandler handler: (@escaping ([CLKComplicationTimelineEntry]?) -> Void)) {
     
       let entries = dataProvider.allMeetingsToday().filter{
-        date.compare($0.startDate) == .OrderedAscending
+        date.compare($0.startDate as Date) == .orderedAscending
       }.map{
         self.timelineEntryForMeeting($0)
       }
@@ -116,8 +116,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
       
   }
   
-  func getCurrentTimelineEntryForComplication(complication: CLKComplication,
-    withHandler handler: ((CLKComplicationTimelineEntry?) -> Void)) {
+  func getCurrentTimelineEntry(for complication: CLKComplication,
+    withHandler handler: (@escaping (CLKComplicationTimelineEntry?) -> Void)) {
       
       if let meeting = dataProvider.allMeetingsToday().nextMeeting(){
         handler(timelineEntryForMeeting(meeting))
@@ -127,12 +127,12 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
       
   }
   
-  func getNextRequestedUpdateDateWithHandler(handler: (NSDate?) -> Void) {
-    handler(NSDate().plus10Minutes());
+  func getNextRequestedUpdateDate(handler: @escaping (Date?) -> Void) {
+    handler(Date().plus10Minutes());
   }
   
-  func getPlaceholderTemplateForComplication(complication: CLKComplication,
-    withHandler handler: (CLKComplicationTemplate?) -> Void) {
+  func getPlaceholderTemplate(for complication: CLKComplication,
+    withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
       if let pause = dataProvider.allMeetingsToday().nextMeeting(){
         handler(templateForMeeting(pause))
       } else {

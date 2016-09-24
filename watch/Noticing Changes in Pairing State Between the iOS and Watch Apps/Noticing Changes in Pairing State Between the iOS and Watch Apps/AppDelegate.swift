@@ -14,15 +14,15 @@ extension WCSession{
     
     //paired
     print("Paired: ", terminator: "")
-    print(self.paired ? "Yes" : "No")
+    print(self.isPaired ? "Yes" : "No")
     
     //watch app installed
     print("Watch app installed: ", terminator: "")
-    print(self.watchAppInstalled ? "Yes" : "No")
+    print(self.isWatchAppInstalled ? "Yes" : "No")
     
     //complication enabled
     print("Complication enabled: ", terminator: "")
-    print(self.complicationEnabled ? "Yes" : "No")
+    print(self.isComplicationEnabled ? "Yes" : "No")
     
     //watch directory
     print("Watch directory url", terminator: "")
@@ -33,15 +33,37 @@ extension WCSession{
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
+  
+  /** Called when all delegate callbacks for the previously selected watch has occurred. The session can be re-activated for the now selected watch using activateSession. */
+  @available(iOS 9.3, *)
+  public func sessionDidDeactivate(_ session: WCSession) {
+    
+  }
+
+  
+  /** Called when the session can no longer be used to modify or add any new transfers and, all interactive messages will be cancelled, but delegate callbacks for background transfers can still occur. This will happen when the selected watch is being changed. */
+  @available(iOS 9.3, *)
+  public func sessionDidBecomeInactive(_ session: WCSession) {
+    
+  }
+
+  /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
+  @available(iOS 9.3, *)
+  public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    
+  }
+  
+  
+
 
   var window: UIWindow?
   
-  func sessionReachabilityDidChange(session: WCSession) {
+  func sessionReachabilityDidChange(_ session: WCSession) {
     print("Reachable: ",  terminator: "")
-    print(session.reachable ? "Yes" : "No")
+    print(session.isReachable ? "Yes" : "No")
   }
   
-  func sessionWatchStateDidChange(session: WCSession) {
+  func sessionWatchStateDidChange(_ session: WCSession) {
     print("Watch state is changed")
     session.printInfo()
   }
@@ -52,12 +74,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
       return
     }
     
-    let session = WCSession.defaultSession()
+    let session = WCSession.default()
     session.delegate = self
-    session.activateSession()
+    session.activate()
   }
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
     example1()
     return true

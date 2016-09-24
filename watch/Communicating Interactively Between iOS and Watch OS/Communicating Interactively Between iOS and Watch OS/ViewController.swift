@@ -11,6 +11,26 @@ import WatchConnectivity
 import SharedCode
 
 class ViewController: UIViewController, WCSessionDelegate {
+  /** Called when all delegate callbacks for the previously selected watch has occurred. The session can be re-activated for the now selected watch using activateSession. */
+  @available(iOS 9.3, *)
+  public func sessionDidDeactivate(_ session: WCSession) {
+    
+  }
+
+  
+  /** Called when the session can no longer be used to modify or add any new transfers and, all interactive messages will be cancelled, but delegate callbacks for background transfers can still occur. This will happen when the selected watch is being changed. */
+  @available(iOS 9.3, *)
+  public func sessionDidBecomeInactive(_ session: WCSession) {
+    
+  }
+
+  
+  /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
+  @available(iOS 9.3, *)
+  public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    
+  }
+
 
   @IBOutlet var sendBtn: UIBarButtonItem!
   @IBOutlet var textField: UITextField!
@@ -27,14 +47,14 @@ class ViewController: UIViewController, WCSessionDelegate {
     set{onMainThread{self.watchReplyLbl.text = newValue}}
   }
   
-  @IBAction func send(sender: AnyObject) {
+  @IBAction func send(_ sender: AnyObject) {
     
-    guard let txt = textField.text where txt.characters.count > 0 else{
+    guard let txt = textField.text , txt.characters.count > 0 else{
       textField.placeholder = "Enter some text here first"
       return
     }
     
-    WCSession.defaultSession().sendMessage(["msg" : txt],
+    WCSession.default().sendMessage(["msg" : txt],
       replyHandler: {dict in
       
         guard dict["msg"] is String &&
@@ -51,8 +71,8 @@ class ViewController: UIViewController, WCSessionDelegate {
     
   }
   
-  func session(session: WCSession,
-    didReceiveMessage message: [String : AnyObject]) {
+  func session(_ session: WCSession,
+    didReceiveMessage message: [String : Any]) {
       
       guard let msg = message["msg"] as? Int,
         let value = PredefinedMessage(rawValue: msg) else{
@@ -61,24 +81,24 @@ class ViewController: UIViewController, WCSessionDelegate {
       }
       
       switch value{
-      case .Hello:
+      case .hello:
         watchReply = "Hello"
-      case .HowAreYou:
+      case .howAreYou:
         watchReply = "How are you?"
-      case .IHearYou:
+      case .iHearYou:
         watchReply = "I hear you"
-      case .ThankYou:
+      case .thankYou:
         watchReply = "Thank you"
       }
       
   }
   
-  func updateUiForSession(session: WCSession){
-    watchStatus = session.reachable ? "Reachable" : "Not reachable"
-    sendBtn.enabled = session.reachable
+  func updateUiForSession(_ session: WCSession){
+    watchStatus = session.isReachable ? "Reachable" : "Not reachable"
+    sendBtn.isEnabled = session.isReachable
   }
   
-  func sessionReachabilityDidChange(session: WCSession) {
+  func sessionReachabilityDidChange(_ session: WCSession) {
     updateUiForSession(session)
   }
   
@@ -89,9 +109,9 @@ class ViewController: UIViewController, WCSessionDelegate {
       return
     }
     
-    let session = WCSession.defaultSession()
+    let session = WCSession.default()
     session.delegate = self
-    session.activateSession()
+    session.activate()
     updateUiForSession(session)
     
   }

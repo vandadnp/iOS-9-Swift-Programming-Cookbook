@@ -15,7 +15,7 @@ class ViewController: UIViewController {
   
   lazy var animator: UIDynamicAnimator = {
     let animator = UIDynamicAnimator(referenceView: self.view)
-    animator.debugEnabled = true
+    animator.isDebugEnabled = true
     return animator
     }()
   
@@ -28,14 +28,14 @@ class ViewController: UIViewController {
   lazy var gravity: UIFieldBehavior = {
     let vector = CGVector(dx: 0.4, dy: 1.0)
     let gravity =
-    UIFieldBehavior.linearGravityFieldWithVector(vector)
+    UIFieldBehavior.linearGravityField(direction: vector)
     gravity.strength = 10.0
     gravity.addItem(self.orangeView)
     return gravity
     }()
   
   lazy var turbulence: UIFieldBehavior = {
-    let turbulence = UIFieldBehavior.turbulenceFieldWithSmoothness(0.5,
+    let turbulence = UIFieldBehavior.turbulenceField(smoothness: 0.5,
       animationSpeed: 60.0)
     turbulence.strength = 12.0
     turbulence.region = UIRegion(radius: 200.0)
@@ -53,16 +53,16 @@ class ViewController: UIViewController {
     
   }
   
-  @IBAction func panning(sender: UIPanGestureRecognizer) {
+  @IBAction func panning(_ sender: UIPanGestureRecognizer) {
     
     switch sender.state{
-    case .Began:
+    case .began:
       collision.removeItem(orangeView)
       gravity.removeItem(orangeView)
       turbulence.removeItem(orangeView)
-    case .Changed:
-      orangeView.center = sender.locationInView(view)
-    case .Ended, .Cancelled:
+    case .changed:
+      orangeView.center = sender.location(in: view)
+    case .ended, .cancelled:
       collision.addItem(orangeView)
       gravity.addItem(orangeView)
       turbulence.addItem(orangeView)

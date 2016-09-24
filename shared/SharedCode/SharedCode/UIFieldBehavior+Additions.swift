@@ -9,7 +9,7 @@
 import Foundation
 
 extension UIFieldBehavior{
-  public func addItems(items: [UIDynamicItem]){
+  public func addItems(_ items: [UIDynamicItem]){
     for item in items{
       addItem(item)
     }

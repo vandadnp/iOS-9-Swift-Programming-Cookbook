@@ -12,80 +12,80 @@ class MyView : UIView{
   
   var points = [CGPoint]()
   
-  func drawForFirstTouchInSet(s: Set<UITouch>, event: UIEvent?){
+  func drawForFirstTouchInSet(_ s: Set<UITouch>, event: UIEvent?){
     
-    guard let touch = s.first, event = event,
-      allTouches = event.coalescedTouchesForTouch(touch)
-      where allTouches.count > 0 else{
+    guard let touch = s.first, let event = event,
+      let allTouches = event.coalescedTouches(for: touch)
+      , allTouches.count > 0 else{
         return
     }
     
-    points += allTouches.map{$0.locationInView(self)}
+    points += allTouches.map{$0.location(in: self)}
     
     setNeedsDisplay()
     
   }
   
-  override func touchesBegan(touches: Set<UITouch>,
-    withEvent event: UIEvent?) {
+  override func touchesBegan(_ touches: Set<UITouch>,
+    with event: UIEvent?) {
       
       points.removeAll()
       drawForFirstTouchInSet(touches, event: event)
       
   }
   
-  override func touchesCancelled(touches: Set<UITouch>?,
-    withEvent event: UIEvent?) {
+  override func touchesCancelled(_ touches: Set<UITouch>,
+    with event: UIEvent?) {
       
       points.removeAll()
-      setNeedsDisplayInRect(bounds)
+      setNeedsDisplay(bounds)
       
   }
   
-  override func touchesMoved(touches: Set<UITouch>,
-    withEvent event: UIEvent?) {
+  override func touchesMoved(_ touches: Set<UITouch>,
+    with event: UIEvent?) {
       
       drawForFirstTouchInSet(touches, event: event)
       
   }
   
-  override func touchesEnded(touches: Set<UITouch>,
-    withEvent event: UIEvent?) {
+  override func touchesEnded(_ touches: Set<UITouch>,
+    with event: UIEvent?) {
       
-      guard let touch = touches.first, event = event,
-        predictedTouches = event.predictedTouchesForTouch(touch)
-        where predictedTouches.count > 0 else{
+      guard let touch = touches.first, let event = event,
+        let predictedTouches = event.predictedTouches(for: touch)
+        , predictedTouches.count > 0 else{
           return
       }
       
-      points += predictedTouches.map{$0.locationInView(self)}
+      points += predictedTouches.map{$0.location(in: self)}
       setNeedsDisplay()
       
   }
   
-  override func drawRect(rect: CGRect) {
+  override func draw(_ rect: CGRect) {
     
     let con = UIGraphicsGetCurrentContext()
     
     //set background color
-    CGContextSetFillColorWithColor(con, UIColor.blackColor().CGColor)
-    CGContextFillRect(con, rect)
+    con?.setFillColor(UIColor.black.cgColor)
+    con?.fill(rect)
     
-    CGContextSetFillColorWithColor(con, UIColor.redColor().CGColor)
-    CGContextSetStrokeColorWithColor(con, UIColor.redColor().CGColor)
+    con?.setFillColor(UIColor.red.cgColor)
+    con?.setStrokeColor(UIColor.red.cgColor)
     
     for point in points{
       
-      CGContextMoveToPoint(con, point.x, point.y)
+      con?.move(to: CGPoint(x: point.x, y: point.y))
       
-      if let last = points.last where point != last{
-        let next = points[points.indexOf(point)! + 1]
-        CGContextAddLineToPoint(con, next.x, next.y)
+      if let last = points.last , point != last{
+        let next = points[points.index(of: point)! + 1]
+        con?.addLine(to: CGPoint(x: next.x, y: next.y))
       }
       
     }
     
-    CGContextStrokePath(con)
+    con?.strokePath()
     
   }
   

@@ -30,7 +30,7 @@ class Automating_UI_Test_ScriptsUITests: XCTestCase {
     func testExample() {
       
       let enteredString = "Hello, World!"
-      let expectedString = enteredString.uppercaseString
+      let expectedString = enteredString.uppercased()
       
       let app = XCUIApplication()
       let fullNameTextField = app.textFields["Full Name"]

@@ -15,22 +15,22 @@ class ViewController: UIViewController {
 
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.backgroundColor = UIColor.greenColor()
+    label.backgroundColor = UIColor.green
     label.text = "Hello, World"
     label.sizeToFit()
     view.addSubview(label)
     
-    label.leadingAnchor.constraintEqualToAnchor(
-      view.readableContentGuide.leadingAnchor).active = true
+    label.leadingAnchor.constraint(
+      equalTo: view.readableContentGuide.leadingAnchor).isActive = true
     
-    label.topAnchor.constraintEqualToAnchor(
-      view.readableContentGuide.topAnchor).active = true
+    label.topAnchor.constraint(
+      equalTo: view.readableContentGuide.topAnchor).isActive = true
     
-    label.trailingAnchor.constraintEqualToAnchor(
-      view.readableContentGuide.trailingAnchor).active = true
+    label.trailingAnchor.constraint(
+      equalTo: view.readableContentGuide.trailingAnchor).isActive = true
     
-    label.bottomAnchor.constraintEqualToAnchor(
-      view.readableContentGuide.bottomAnchor).active = true
+    label.bottomAnchor.constraint(
+      equalTo: view.readableContentGuide.bottomAnchor).isActive = true
     
   }
 

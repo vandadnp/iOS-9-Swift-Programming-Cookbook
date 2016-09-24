@@ -24,8 +24,8 @@ class ViewController: UIViewController {
     }
     
     let options = [
-      NSDocumentTypeDocumentAttribute : NSRTFTextDocumentType,
-      NSCharacterEncodingDocumentAttribute : NSUTF8StringEncoding
+      NSDocumentTypeDocumentAttribute : NSRTFTextDocumentType as AnyObject,
+      NSCharacterEncodingDocumentAttribute : String.Encoding.utf8 as AnyObject
       ] as [String : AnyObject]
     
     do{

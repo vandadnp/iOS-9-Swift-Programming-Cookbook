@@ -15,7 +15,7 @@ class ViewController: UIViewController {
   
   lazy var animator: UIDynamicAnimator = {
     let animator = UIDynamicAnimator(referenceView: self.view)
-    animator.debugEnabled = true
+    animator.isDebugEnabled = true
     return animator
     }()
   
@@ -27,19 +27,19 @@ class ViewController: UIViewController {
   
   lazy var centerGravity: UIFieldBehavior = {
     let centerGravity =
-    UIFieldBehavior.radialGravityFieldWithPosition(self.view.center)
+    UIFieldBehavior.radialGravityField(position: self.view.center)
     centerGravity.addItem(self.orangeView)
     centerGravity.region = UIRegion(radius: 200)
     centerGravity.strength = -1 //repel items
     return centerGravity
     }()
   
-  override func viewWillTransitionToSize(size: CGSize,
-    withTransitionCoordinator
+  override func viewWillTransition(to size: CGSize,
+    with
     coordinator: UIViewControllerTransitionCoordinator) {
       
-      super.viewWillTransitionToSize(size,
-        withTransitionCoordinator: coordinator)
+      super.viewWillTransition(to: size,
+        with: coordinator)
       
       centerGravity.position = size.center
       
@@ -53,15 +53,15 @@ class ViewController: UIViewController {
     
   }
   
-  @IBAction func panning(sender: UIPanGestureRecognizer) {
+  @IBAction func panning(_ sender: UIPanGestureRecognizer) {
     
     switch sender.state{
-    case .Began:
+    case .began:
       collision.removeItem(orangeView)
       centerGravity.removeItem(orangeView)
-    case .Changed:
-      orangeView.center = sender.locationInView(view)
-    case .Ended, .Cancelled:
+    case .changed:
+      orangeView.center = sender.location(in: view)
+    case .ended, .cancelled:
       collision.addItem(orangeView)
       centerGravity.addItem(orangeView)
     default: ()

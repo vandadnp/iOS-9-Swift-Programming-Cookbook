@@ -31,17 +31,17 @@ class Long_Pressing_on_UI_ElementsUITests: XCTestCase {
   func testExample() {
     
     let app = XCUIApplication()
-    let view = app.windows.childrenMatchingType(.Unknown).elementBoundByIndex(0)
-    view.pressForDuration(5)
+    let view = app.windows.children(matching: .other).element(boundBy: 0)
+    view.press(forDuration: 5)
     
     XCTAssert(app.alerts.count > 0)
     
     let text = "Foo Bar"
     app.typeText(text)
     
-    let alert = app.alerts.elementBoundByIndex(0)
-    let saveBtn = alert.descendantsMatchingType(.Button).matchingPredicate(
-      NSPredicate(format: "title like[c] 'Save'")).elementBoundByIndex(0)
+    let alert = app.alerts.element(boundBy: 0)
+    let saveBtn = alert.descendants(matching: .button).matching(
+      NSPredicate(format: "title like[c] 'Save'")).element(boundBy: 0)
     
     saveBtn.tap()
     

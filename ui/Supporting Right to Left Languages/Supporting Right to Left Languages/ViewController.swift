@@ -28,17 +28,17 @@ class ViewController: UIViewController {
     txtField.text = NSLocalizedString("right", comment: "")
   }
   
-  override func viewDidAppear(animated: Bool) {
+  override func viewDidAppear(_ animated: Bool) {
     
     let direction = UIView
-      .userInterfaceLayoutDirectionForSemanticContentAttribute(
-        txtField.semanticContentAttribute)
+      .userInterfaceLayoutDirection(
+        for: txtField.semanticContentAttribute)
     
     switch direction{
-    case .LeftToRight:
-      txtField.textAlignment = .Left
-    case .RightToLeft:
-      txtField.textAlignment = .Right
+    case .leftToRight:
+      txtField.textAlignment = .left
+    case .rightToLeft:
+      txtField.textAlignment = .right
     }
     
   }

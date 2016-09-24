@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8164.2" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="c5y-0U-h7i">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="c5y-0U-h7i">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -14,40 +15,37 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rTZ-Ei-9YT">
-                                <rect key="frame" x="20" y="72" width="108" height="30"/>
                                 <state key="normal" title="Start Recording"/>
                                 <connections>
                                     <action selector="record" destination="BYZ-38-t0r" eventType="touchUpInside" id="WpS-08-6i0"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tVU-dq-aSJ">
-                                <rect key="frame" x="163" y="286" width="275" height="29"/>
-                                <segments>
-                                    <segment title="Play with"/>
-                                    <segment title="This while recording"/>
-                                </segments>
-                            </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OO0-Nx-gsw">
-                                <rect key="frame" x="20" y="110" width="108" height="30"/>
                                 <state key="normal" title="Stop recording"/>
                                 <connections>
                                     <action selector="stop" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uon-3C-911"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tVU-dq-aSJ">
+                                <segments>
+                                    <segment title="Play with"/>
+                                    <segment title="This while recording"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="OO0-Nx-gsw" firstAttribute="top" secondItem="rTZ-Ei-9YT" secondAttribute="bottom" constant="8" symbolic="YES" id="3MG-Eu-OCF"/>
-                            <constraint firstItem="rTZ-Ei-9YT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="4LI-kM-xpo"/>
-                            <constraint firstItem="rTZ-Ei-9YT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="QkQ-Oe-Uce"/>
-                            <constraint firstItem="OO0-Nx-gsw" firstAttribute="trailing" secondItem="rTZ-Ei-9YT" secondAttribute="trailing" id="ajo-hA-Fih"/>
-                            <constraint firstItem="tVU-dq-aSJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="erK-I2-nGo"/>
-                            <constraint firstItem="tVU-dq-aSJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="l7d-0S-c7T"/>
-                            <constraint firstItem="OO0-Nx-gsw" firstAttribute="leading" secondItem="rTZ-Ei-9YT" secondAttribute="leading" id="wbC-Nu-Wzl"/>
+                            <constraint firstItem="rTZ-Ei-9YT" firstAttribute="leading" secondItem="OO0-Nx-gsw" secondAttribute="leading" id="ENn-6D-D2T"/>
+                            <constraint firstItem="rTZ-Ei-9YT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="FS2-cP-1H1"/>
+                            <constraint firstItem="tVU-dq-aSJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Tmq-w3-cz0"/>
+                            <constraint firstItem="tVU-dq-aSJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iZ4-Ub-FP4"/>
+                            <constraint firstItem="OO0-Nx-gsw" firstAttribute="top" secondItem="rTZ-Ei-9YT" secondAttribute="bottom" constant="8" symbolic="YES" id="lhl-YA-Zp7"/>
+                            <constraint firstItem="rTZ-Ei-9YT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="r5D-MP-2u6"/>
+                            <constraint firstItem="rTZ-Ei-9YT" firstAttribute="trailing" secondItem="OO0-Nx-gsw" secondAttribute="trailing" id="uxl-6h-PPG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hCv-RQ-qQP"/>

@@ -13,22 +13,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
   
-  enum Errors : ErrorType{
-    case EmptyData
+  enum Errors : Error{
+    case emptyData
   }
   
-  func bytesFromData(data: NSData) throws -> [UInt8]{
+  func bytesFromData(_ data: Data) throws -> [UInt8]{
     
-    if (data.length == 0){
-      throw Errors.EmptyData
+    if (data.count == 0){
+      throw Errors.emptyData
     }
     
-    var buffer = [UInt8](count: data.length, repeatedValue: 0)
+    var buffer = [UInt8](repeating: 0, count: data.count)
     
     if #available(iOS 8.1, *){
-      data.getBytes(&buffer, length: data.length)
+      (data as NSData).getBytes(&buffer, length: data.count)
     } else {
-      data.getBytes(&buffer)
+      (data as NSData).getBytes(&buffer)
     }
     
     return buffer
@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func example1(){
     
-    guard let data = "Foo".dataUsingEncoding(NSUTF8StringEncoding) else {
+    guard let data = "Foo".data(using: String.Encoding.utf8) else {
       return
     }
     
@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
   }
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
     example1()
     

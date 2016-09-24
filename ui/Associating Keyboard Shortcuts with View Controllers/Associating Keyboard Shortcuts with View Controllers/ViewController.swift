@@ -8,21 +8,21 @@
 
 import UIKit
 
-func +<T: OptionSetType where T.RawValue : SignedIntegerType>
-  (lhs: T, rhs: T) -> T{
+func +<T: OptionSet>
+  (lhs: T, rhs: T) -> T where T.RawValue : SignedInteger{
     return T(rawValue: lhs.rawValue | rhs.rawValue)
 }
 
 class ViewController: UIViewController {
   
-  func handleCommand(cmd: UIKeyCommand){
+  func handleCommand(_ cmd: UIKeyCommand){
     
     let c = UIAlertController(title: "Shortcut pressed",
-      message: "You pressed the shortcut key", preferredStyle: .Alert)
+      message: "You pressed the shortcut key", preferredStyle: .alert)
     
-    c.addAction(UIAlertAction(title: "Ok!", style: .Destructive, handler: nil))
+    c.addAction(UIAlertAction(title: "Ok!", style: .destructive, handler: nil))
     
-    presentViewController(c, animated: true, completion: nil)
+    present(c, animated: true, completion: nil)
     
   }
   
@@ -30,8 +30,8 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     
     let command = UIKeyCommand(input: "N",
-      modifierFlags: .Command + .Alternate + .Control,
-      action: "handleCommand:")
+      modifierFlags: .command + .alternate + .control,
+      action: #selector(ViewController.handleCommand(_:)))
     
     addKeyCommand(command)
     

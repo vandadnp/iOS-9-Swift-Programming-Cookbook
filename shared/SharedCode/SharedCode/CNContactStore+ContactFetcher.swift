@@ -10,30 +10,30 @@ import Foundation
 import Contacts
 
 public extension CNContactStore{
-  func firstUnifiedContactMatchingName(name: String,
-    toFetch: [CNKeyDescriptor], output: CNContact? -> Void){
+  func firstUnifiedContactMatchingName(_ name: String,
+    toFetch: [CNKeyDescriptor], output: @escaping (CNContact?) -> Void){
     
-    NSOperationQueue().addOperationWithBlock{
-      let predicate = CNContact.predicateForContactsMatchingName(name)
+    OperationQueue().addOperation{
+      let predicate = CNContact.predicateForContacts(matchingName: name)
       
       do{
         
-        let contacts = try self.unifiedContactsMatchingPredicate(predicate,
+        let contacts = try self.unifiedContacts(matching: predicate,
           keysToFetch: toFetch)
         
         guard contacts.count > 0 else{
-          NSOperationQueue.mainQueue().addOperationWithBlock{output(nil)}
+          OperationQueue.main.addOperation{output(nil)}
           print("No contacts found")
           return
         }
         
         //only do this to the first contact matching our criteria
         guard let contact = contacts.first else{
-          NSOperationQueue.mainQueue().addOperationWithBlock{output(nil)}
+          OperationQueue.main.addOperation{output(nil)}
           return
         }
         
-        NSOperationQueue.mainQueue().addOperationWithBlock{output(contact)}
+        OperationQueue.main.addOperation{output(contact)}
         
       } catch let err{
         print(err)

@@ -11,11 +11,18 @@ import WatchConnectivity
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate{
   
+  /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
+  @available(watchOS 2.2, *)
+  public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    
+  }
+
+  
   var status = ""{
     didSet{
-      dispatch_async(dispatch_get_main_queue()){
+      DispatchQueue.main.async{
         guard let interface =
-          WKExtension.sharedExtension().rootInterfaceController as?
+          WKExtension.shared().rootInterfaceController as?
           InterfaceController else{
             return
         }
@@ -24,17 +31,17 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate{
     }
   }
   
-  func session(session: WCSession, didReceiveFile file: WCSessionFile) {
+  func session(_ session: WCSession, didReceive file: WCSessionFile) {
     
-    guard let metadata = file.metadata where metadata["fileName"]
+    guard let metadata = file.metadata , metadata["fileName"]
       is String else{
       status = "No metadata came through"
       return
     }
 
     do{
-      let str = try String(NSString(contentsOfURL: file.fileURL,
-        encoding: NSUTF8StringEncoding))
+      let str = try String(NSString(contentsOf: file.fileURL,
+        encoding: String.Encoding.utf8.rawValue))
       guard str.characters.count > 0 else{
         status = "No file came through"
         return
@@ -54,9 +61,9 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate{
       return
     }
     
-    let session = WCSession.defaultSession()
+    let session = WCSession.default()
     session.delegate = self
-    session.activateSession()
+    session.activate()
     
   }
   

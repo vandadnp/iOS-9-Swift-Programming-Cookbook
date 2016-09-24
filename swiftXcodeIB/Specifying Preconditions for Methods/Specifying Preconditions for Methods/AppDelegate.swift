@@ -13,11 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-  func stringFromData(data: NSData?) -> String?{
+  func stringFromData(_ data: Data?) -> String?{
     
     guard let data = data,
-      let str = NSString(data: data, encoding: NSUTF8StringEncoding)
-      where data.length > 0 else{
+      let str = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
+      , data.count > 0 else{
       return nil
     }
     
@@ -37,8 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func example2(){
     
-    guard let data = NSString(string: "Foo")
-      .dataUsingEncoding(NSUTF8StringEncoding) where data.length > 0 else{
+    guard let data = "Foo".data(using: .utf8),
+      data.count > 0 else{
         return
     }
     
@@ -50,9 +50,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
   }
   
-  func example3(firstName firstName: String?, lastName: String?, age: UInt8?){
+  func example3(firstName: String?, lastName: String?, age: UInt8?){
     
-    guard let firstName = firstName, let lastName = lastName , _ = age where
+    guard let firstName = firstName, let lastName = lastName , let _ = age ,
       firstName.characters.count > 0 && lastName.characters.count > 0 else{
         return
     }
@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
   }
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
     example1()
     example2()

@@ -13,22 +13,22 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate{
   
   @IBOutlet var textField: UITextField!
   
-  func safariViewControllerDidFinish(controller: SFSafariViewController) {
-    dismissViewControllerAnimated(true, completion: nil)
+  func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+    dismiss(animated: true, completion: nil)
   }
 
   @IBAction func openInSafari() {
     
-    guard let t = textField.text where t.characters.count > 0,
-      let u = NSURL(string: t)  else{
+    guard let t = textField.text , t.characters.count > 0,
+      let u = URL(string: t)  else{
       //the url is missing, you can further code this method if you want
       return
     }
     
-    let controller = SFSafariViewController(URL: u,
+    let controller = SFSafariViewController(url: u,
       entersReaderIfAvailable: true)
     controller.delegate = self
-    presentViewController(controller, animated: true, completion: nil)
+    present(controller, animated: true, completion: nil)
     
   }
   

@@ -12,7 +12,7 @@ class ViewController: UIViewController {
   
   var rightStack: UIStackView!
 
-  func lblWithIndex(idx: Int) -> UILabel{
+  func lblWithIndex(_ idx: Int) -> UILabel{
     let label = UILabel()
     label.text = "Item \(idx)"
     label.sizeToFit()
@@ -20,17 +20,17 @@ class ViewController: UIViewController {
   }
   
   func newButton() -> UIButton{
-    let btn = UIButton(type: .System)
-    btn.setTitle("Add new items...", forState: .Normal)
-    btn.addTarget(self, action: "addNewItem",
-      forControlEvents: .TouchUpInside)
+    let btn = UIButton(type: .system)
+    btn.setTitle("Add new items...", for: UIControlState())
+    btn.addTarget(self, action: #selector(ViewController.addNewItem),
+      for: .touchUpInside)
     return btn
   }
   
   func addNewItem(){
     let n = rightStack.arrangedSubviews.count
     let v = lblWithIndex(n)
-    rightStack.insertArrangedSubview(v, atIndex: n - 1)
+    rightStack.insertArrangedSubview(v, at: n - 1)
   }
   
   override func viewDidLoad() {
@@ -43,14 +43,14 @@ class ViewController: UIViewController {
     
     rightStack.translatesAutoresizingMaskIntoConstraints = false
     
-    rightStack.axis = .Vertical
-    rightStack.distribution = .EqualSpacing
+    rightStack.axis = .vertical
+    rightStack.distribution = .equalSpacing
     rightStack.spacing = 5
     
-    rightStack.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor,
-      constant: -20).active = true
-    rightStack.topAnchor.constraintEqualToAnchor(
-      topLayoutGuide.bottomAnchor).active = true
+    rightStack.trailingAnchor.constraint(equalTo: view.trailingAnchor,
+      constant: -20).isActive = true
+    rightStack.topAnchor.constraint(
+      equalTo: topLayoutGuide.bottomAnchor).isActive = true
     
   }
 

@@ -13,11 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
   
-  enum Errors : ErrorType{
-    case EmptyString
+  enum Errors : Error{
+    case emptyString
   }
   
-  func imageForString(str: String, size: CGSize) throws -> UIImage{
+  func imageForString(_ str: String, size: CGSize) throws -> UIImage{
     
     defer{
       UIGraphicsEndImageContext()
@@ -26,16 +26,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UIGraphicsBeginImageContextWithOptions(size, true, 0)
     
     if str.characters.count == 0{
-      throw Errors.EmptyString
+      throw Errors.emptyString
     }
     
     //draw the string here...
     
-    return UIGraphicsGetImageFromCurrentImageContext()
+    return UIGraphicsGetImageFromCurrentImageContext()!
     
   }
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
     do{
       let i = try imageForString("Foo", size: CGSize(width: 100, height: 50))

@@ -13,18 +13,18 @@ class InterfaceController: WKInterfaceController {
   
   @IBOutlet var statusLbl: WKInterfaceLabel!
   
-  var url: NSURL{
-    let fm = NSFileManager()
-    let url = try! fm.URLForDirectory(NSSearchPathDirectory.MusicDirectory,
-      inDomain: NSSearchPathDomainMask.UserDomainMask,
-      appropriateForURL: nil, create: true)
-      .URLByAppendingPathComponent("recording")
+  var url: URL{
+    let fm = FileManager()
+    let url = try! fm.url(for: FileManager.SearchPathDirectory.musicDirectory,
+      in: FileManager.SearchPathDomainMask.userDomainMask,
+      appropriateFor: nil, create: true)
+      .appendingPathComponent("recording")
     return url
   }
   
   var status = ""{
     willSet{
-      dispatch_async(dispatch_get_main_queue()){
+      DispatchQueue.main.async{
         self.statusLbl.setText(newValue)
       }
     }
@@ -32,20 +32,20 @@ class InterfaceController: WKInterfaceController {
   
   @IBAction func record() {
     
-    let oneMinute: NSTimeInterval = 1 * 60
+    let oneMinute: TimeInterval = 1 * 60
     
-    let yes = NSNumber(bool: true)
-    let no = NSNumber(bool: false)
+    let yes = NSNumber(value: true as Bool)
+    let no = NSNumber(value: false as Bool)
     
     let options = [
       WKAudioRecorderControllerOptionsActionTitleKey : "Audio Recorder",
       WKAudioRecorderControllerOptionsAlwaysShowActionTitleKey : yes,
       WKAudioRecorderControllerOptionsAutorecordKey : no,
       WKAudioRecorderControllerOptionsMaximumDurationKey : oneMinute
-    ]
+    ] as [String : Any]
     
-    presentAudioRecorderControllerWithOutputURL(url,
-      preset: WKAudioRecorderPreset.WideBandSpeech,
+    presentAudioRecorderController(withOutputURL: url,
+      preset: WKAudioRecorderPreset.wideBandSpeech,
       options: options){
         success, error in
         
